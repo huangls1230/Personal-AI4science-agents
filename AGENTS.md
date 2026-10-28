@@ -9,3 +9,5 @@
 - 预算、可用性和权限以实际执行路径可验证的限制为准，不以提示词代替强制控制。
 
 文档索引：[架构](docs/architecture.md)、[任务契约](docs/contracts.md)、[本地执行和预算](docs/runtime.md)、[科研规范](docs/research-integrity.md)、[Codex 集成](docs/codex-integration.md)。
+
+文献任务按需参阅 [文献组](teams/literature/README.md) 和 [文献工作流](workflows/literature.md)。

@@ -1,3 +1,3 @@
 # 项目 Codex 配置
 
-预留项目级 Codex 原生配置与自定义代理；当前没有注册代理或 MCP 服务。不同版本需先验证配置支持，且不修改用户全局配置。详见 `docs/codex-integration.md`。
+`agents/` 定义三个项目级 Literature Custom Subagents。角色继承父会话模型、工具和权限；项目没有配置 MCP 服务，Python 原生适配器仍未接通。实际发现与调用需按当前 Codex 版本验证；详见 `docs/codex-integration.md`。

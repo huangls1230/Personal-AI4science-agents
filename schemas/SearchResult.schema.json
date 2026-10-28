@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchResult",
+  "description": "One candidate; source-reported fulltext links do not establish access. doi_title_match checks DOI and normalized title only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "authors",
+    "year",
+    "venue",
+    "doi",
+    "source_url",
+    "abstract",
+    "fulltext_url",
+    "publication_type",
+    "retrieved_at",
+    "schema_version",
+    "source_records",
+    "metadata_conflicts",
+    "abstract_availability",
+    "fulltext_availability",
+    "fulltext_downloaded",
+    "relevance_level",
+    "relevance_reason",
+    "verification_status",
+    "verification"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1000,
+      "maximum": 9999
+    },
+    "venue": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "abstract": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fulltext_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publication_type": {
+      "enum": [
+        "journal_article",
+        "conference_paper",
+        "preprint",
+        "book",
+        "other",
+        "unknown"
+      ]
+    },
+    "retrieved_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "source_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "title",
+          "authors",
+          "year",
+          "venue",
+          "doi",
+          "source_url",
+          "abstract",
+          "fulltext_url",
+          "publication_type",
+          "retrieved_at"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1000,
+            "maximum": 9999
+          },
+          "venue": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "doi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "abstract": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fulltext_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "publication_type": {
+            "enum": [
+              "journal_article",
+              "conference_paper",
+              "preprint",
+              "book",
+              "other",
+              "unknown"
+            ]
+          },
+          "retrieved_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "metadata_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "abstract_availability": {
+      "enum": [
+        "available",
+        "missing"
+      ]
+    },
+    "fulltext_availability": {
+      "enum": [
+        "link_reported",
+        "unknown"
+      ]
+    },
+    "fulltext_downloaded": {
+      "const": false
+    },
+    "relevance_level": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "relevance_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification_status": {
+      "enum": [
+        "doi_title_match",
+        "conflict",
+        "unverified",
+        "no_doi"
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source",
+        "retrieved_at",
+        "detail"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "doi_title_match",
+            "conflict",
+            "unverified",
+            "no_doi"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrieved_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

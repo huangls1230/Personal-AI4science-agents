@@ -1,3 +1,3 @@
 # 项目 Skills
 
-此目录预留项目技能；目前没有注册任何项目技能。技能以独立目录和 `SKILL.md` 定义，按需加载；详见 `docs/codex-integration.md`。
+`literature-search`、`literature-reading` 和 `literature-citation` 是项目级精简工作流指导，按需加载。技能不是 Agent 或工具，也不提供实际检索、PDF 解析、Zotero 或 Obsidian 连接。

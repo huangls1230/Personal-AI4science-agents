@@ -5,3 +5,4 @@ workspace/runs/
 workspace/private/
 
 .test-tmp/
+workspace/cache/
