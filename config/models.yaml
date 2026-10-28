@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1.0",
+  "models": [
+    {
+      "id": "mock-model",
+      "provider": "local-mock",
+      "enabled": true,
+      "test_only": true,
+      "context_length": null,
+      "capabilities": [
+        "mock"
+      ]
+    },
+    {
+      "id": "codex-session",
+      "provider": "openai",
+      "enabled": false,
+      "context_length": null,
+      "capabilities": [
+        "reasoning"
+      ],
+      "note": "The parent Codex session is not a Python model adapter."
+    },
+    {
+      "id": "deepseek-unconfigured",
+      "provider": "deepseek",
+      "enabled": false,
+      "context_length": null,
+      "capabilities": [
+        "reasoning"
+      ]
+    }
+  ]
+}

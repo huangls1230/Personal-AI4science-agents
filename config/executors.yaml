@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1.0",
+  "executors": [
+    {
+      "id": "script",
+      "kind": "script",
+      "enabled": true,
+      "capabilities": [
+        "sha256"
+      ],
+      "models": []
+    },
+    {
+      "id": "mock",
+      "kind": "mock",
+      "enabled": true,
+      "test_only": true,
+      "capabilities": [
+        "mock"
+      ],
+      "models": []
+    },
+    {
+      "id": "codex-native",
+      "kind": "codex_native",
+      "enabled": false,
+      "capabilities": [
+        "reasoning",
+        "delegation"
+      ],
+      "models": []
+    },
+    {
+      "id": "pi",
+      "kind": "external_harness",
+      "enabled": false,
+      "capabilities": [
+        "batch",
+        "reasoning"
+      ],
+      "models": []
+    }
+  ]
+}

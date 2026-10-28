@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "preferences": {
+    "cost": 1.0,
+    "speed": 1.0,
+    "quality": 1.0
+  },
+  "candidates": [
+    {
+      "executor": "script",
+      "kind": "script",
+      "model_id": null,
+      "cost_score": 0.0,
+      "speed_score": 1.0,
+      "quality_score": 1.0,
+      "token_upper_bound": 0,
+      "cost_upper_bound": 0.0
+    },
+    {
+      "executor": "mock",
+      "kind": "mock",
+      "model_id": null,
+      "cost_score": 0.0,
+      "speed_score": 1.0,
+      "quality_score": 0.0,
+      "token_upper_bound": null,
+      "cost_upper_bound": null
+    },
+    {
+      "executor": "codex-native",
+      "kind": "codex_native",
+      "model_id": "codex-session",
+      "cost_score": 0.5,
+      "speed_score": 0.5,
+      "quality_score": 1.0,
+      "token_upper_bound": null,
+      "cost_upper_bound": null
+    },
+    {
+      "executor": "pi",
+      "kind": "external_harness",
+      "model_id": "deepseek-unconfigured",
+      "cost_score": 0.5,
+      "speed_score": 0.5,
+      "quality_score": 0.5,
+      "token_upper_bound": null,
+      "cost_upper_bound": null
+    }
+  ]
+}

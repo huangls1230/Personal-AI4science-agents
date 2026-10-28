@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1.0",
+  "max_executions": 1,
+  "max_retries": 0,
+  "max_concurrent": 1,
+  "max_tokens": null,
+  "max_cost": null,
+  "on_exceed": "blocked",
+  "max_model_calls": null
+}
