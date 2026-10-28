@@ -1,6 +1,6 @@
 # 文献工作流（人工协调骨架）
 
-本文描述由 Codex 主控的任务流程，不是自动执行器。Search 的 Python 工具及使用方式见 [Search 使用说明](../docs/literature-search.md)。按任务需要选用 `literature_search`、`literature_reading` 和 `literature_citation`；无需为每次任务调用所有角色。实际工具、模型、访问权限与预算须在运行时分别核实。项目 Python Router 只提供建议，原生委派不自动经过 Python Adapter 或 `BudgetGuard`。
+本文描述由 Codex 主控的任务流程，不是自动执行器。Search 和 Reading 的 Python 工具及使用方式见 [Search 使用说明](../docs/literature-search.md) 与 [Reading 使用说明](../docs/literature-reading.md)。按任务需要选用 `literature_search`、`literature_reading` 和 `literature_citation`；无需为每次任务调用所有角色。实际工具、模型、访问权限与预算须在运行时分别核实。项目 Python Router 只提供建议，原生委派不自动经过 Python Adapter 或 `BudgetGuard`。
 
 ## 任务与上下文
 
@@ -21,6 +21,6 @@
 
 ## Zotero 与 Obsidian 边界
 
-本阶段没有实现或验证实际连接。Zotero Local API、附件定位、标签更新、引用导出和 Obsidian vault 写入均为后续集成。接入前需核实可用工具、授权与访问范围、敏感数据处理、超时、失败、重试、幂等、冲突与回滚方案。只读查询不代表具有写权限；任何真实副作用不得仅凭角色说明执行。不能确定原操作是否成功时，先检查当前状态，再决定是否重试。
+Citation 已实现 Zotero Local API 只读查询、附件元数据、原生引用导出以及 workspace 内阅读卡片关联，实际验证与局限见 [Citation 使用说明](../docs/literature-citation.md)。Reading 的 Zotero 输入桥接和外部 Obsidian vault 读写尚未接入；阅读状态仅生成提案，馆藏写入尚未实现。运行时需核实可用工具、授权与访问范围、敏感数据处理、超时、失败、重试、幂等、冲突与回滚方案。只读查询不代表具有写权限；任何真实副作用不得仅凭角色说明执行。不能确定原操作是否成功时，先检查当前状态，再决定是否重试。
 
 工作区中的阅读卡片、文献清单或笔记草稿应保留来源、检索／访问时间、材料类别、版本和精确定位；如有可用原文，记录其受控引用及哈希。哈希只验证内容一致，不验证文献真实性或结论正确性。保留证据和不确定性，不为节约上下文删除必要原始资料。

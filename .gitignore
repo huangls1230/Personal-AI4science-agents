@@ -6,3 +6,4 @@ workspace/private/
 
 .test-tmp/
 workspace/cache/
+workspace/inputs/

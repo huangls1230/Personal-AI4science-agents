@@ -1,0 +1,876 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReadingResult",
+  "$ref": "#/$defs/ReadingResult",
+  "$defs": {
+    "ArtifactReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "schema_version"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "EvidenceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact",
+        "description",
+        "schema_version"
+      ],
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/ArtifactReference"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "UsageMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version"
+      ],
+      "properties": {
+        "input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "token_measurement": {
+          "enum": [
+            "unknown",
+            "exact",
+            "estimated"
+          ]
+        },
+        "cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_calls": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "input_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "output_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "ExecutorCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor",
+        "schema_version"
+      ],
+      "properties": {
+        "executor": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "implemented": {
+          "type": "boolean"
+        },
+        "allowed_sensitivities": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "public",
+              "internal",
+              "sensitive"
+            ]
+          }
+        },
+        "compatible_models": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "ResearchTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "objective",
+        "task_type",
+        "schema_version"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "task_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "complexity": {
+          "enum": [
+            "deterministic",
+            "simple",
+            "complex"
+          ]
+        },
+        "sensitivity": {
+          "enum": [
+            "public",
+            "internal",
+            "sensitive"
+          ]
+        },
+        "executor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactReference"
+          }
+        },
+        "output_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "running",
+            "completed",
+            "failed",
+            "blocked",
+            "approval_required"
+          ]
+        },
+        "idempotency_key": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "ExecutionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task",
+        "executor",
+        "schema_version"
+      ],
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/ResearchTask"
+        },
+        "executor": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "ExecutionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "executor",
+        "status",
+        "schema_version"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "executor": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "failed",
+            "blocked",
+            "approval_required"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "output_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactReference"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "usage_metrics": {
+          "$ref": "#/$defs/UsageMetrics"
+        },
+        "quality_status": {
+          "enum": [
+            "not_reviewed",
+            "passed",
+            "failed"
+          ]
+        },
+        "approval_status": {
+          "enum": [
+            "not_required",
+            "pending",
+            "approved",
+            "rejected"
+          ]
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "ReadingResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "task_id",
+        "paper_id",
+        "zotero_item_key",
+        "source_document",
+        "document_hash",
+        "reading_mode",
+        "evidence_scope",
+        "analysis_status",
+        "reading_card_path",
+        "evidence_references",
+        "limitations",
+        "unresolved_questions",
+        "suggested_next_actions",
+        "suggested_zotero_status",
+        "usage_metrics",
+        "execution",
+        "citation_handoff",
+        "claim_evidence"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "paper_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "zotero_item_key": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_document": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ArtifactReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "document_hash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reading_mode": {
+          "enum": [
+            "deep",
+            "abstract",
+            "inspection"
+          ]
+        },
+        "evidence_scope": {
+          "enum": [
+            "full_text",
+            "partial_text",
+            "abstract",
+            "metadata"
+          ]
+        },
+        "analysis_status": {
+          "enum": [
+            "draft",
+            "partial",
+            "completed",
+            "blocked"
+          ],
+          "description": "completed requires a source evidence reference and an evidence/author claim with excerpt; PDFs require a matched physical page. This is not quality or approval."
+        },
+        "reading_card_path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "unresolved_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "suggested_next_actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "suggested_zotero_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "research-reading",
+                "research-deepread",
+                "research-reread"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "usage_metrics": {
+          "$ref": "#/$defs/UsageMetrics"
+        },
+        "execution": {
+          "$ref": "#/$defs/ExecutionResult"
+        },
+        "citation_handoff": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "schema_version",
+                "action",
+                "zotero_item_key",
+                "suggested_status",
+                "understanding_verified",
+                "requires_approval",
+                "reason"
+              ],
+              "properties": {
+                "schema_version": {
+                  "const": "1.0"
+                },
+                "action": {
+                  "const": "propose_reading_status"
+                },
+                "zotero_item_key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "suggested_status": {
+                  "enum": [
+                    "research-reading",
+                    "research-deepread",
+                    "research-reread"
+                  ]
+                },
+                "understanding_verified": {
+                  "type": "boolean"
+                },
+                "requires_approval": {
+                  "const": true
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "claim_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim",
+              "kind",
+              "excerpt",
+              "pdf_page",
+              "printed_page",
+              "section",
+              "figure",
+              "table",
+              "equation",
+              "location_status",
+              "evidence_strength",
+              "assumptions",
+              "alternative_explanation",
+              "assessment"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "kind": {
+                "enum": [
+                  "evidence",
+                  "author_interpretation",
+                  "agent_inference",
+                  "speculation"
+                ]
+              },
+              "excerpt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "pdf_page": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              },
+              "printed_page": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "section": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "figure": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "table": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "equation": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "location_status": {
+                "enum": [
+                  "verified",
+                  "unverified"
+                ],
+                "description": "verified denotes a text excerpt match against supplied extracted physical PDF-page text only; printed page, section, figure, table and equation require human confirmation, and entailment is not established."
+              },
+              "evidence_strength": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assumptions": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "alternative_explanation": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessment": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "analysis_status": {
+                "const": "completed"
+              }
+            },
+            "required": [
+              "analysis_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "source_document": {
+                "$ref": "#/$defs/ArtifactReference"
+              },
+              "evidence_references": {
+                "minItems": 1
+              },
+              "claim_evidence": {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "evidence",
+                        "author_interpretation"
+                      ]
+                    },
+                    "excerpt": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "excerpt"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "suggested_zotero_status": {
+                "const": "research-deepread"
+              }
+            },
+            "required": [
+              "suggested_zotero_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "analysis_status": {
+                "const": "completed"
+              },
+              "reading_mode": {
+                "const": "deep"
+              },
+              "evidence_scope": {
+                "enum": [
+                  "full_text",
+                  "partial_text"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reading_mode": {
+                "const": "deep"
+              }
+            },
+            "required": [
+              "reading_mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_scope": {
+                "enum": [
+                  "full_text",
+                  "partial_text"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

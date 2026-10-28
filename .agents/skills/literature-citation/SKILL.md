@@ -4,3 +4,5 @@ description: Verify research references and manage authorized citation metadata,
 ---
 
 Identify records by available reliable identifiers, compare metadata against accessible sources, and mark uncertainty or possible duplicates. Zotero item keys and citation keys are distinct; verify each from actual data. Report unavailable tools and formats rather than inventing records or successful exports. Treat changes to a Zotero library or external notes as explicit external writes requiring authorization. Stage output in assigned workspace paths and return source locators and hashes. This skill does not itself connect to Zotero or implement write actions.
+
+For the implemented Zotero and citation workflow, use the project skill `zotero-citation` and its referenced documentation.

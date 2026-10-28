@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CitationRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "zotero_library_id",
+    "zotero_item_key",
+    "citation_key",
+    "doi",
+    "title",
+    "authors",
+    "publication_year",
+    "venue",
+    "volume",
+    "issue",
+    "pages_or_article_number",
+    "publication_type",
+    "source_url",
+    "collections",
+    "tags",
+    "reading_status",
+    "metadata_verification_status",
+    "reading_card_path",
+    "attachment_references",
+    "zotero_library_kind",
+    "zotero_server_id"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "zotero_library_id": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "zotero_item_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "citation_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publication_year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1000,
+      "maximum": 9999
+    },
+    "venue": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volume": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "issue": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pages_or_article_number": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publication_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reading_status": {
+      "enum": [
+        null,
+        "research-unread",
+        "research-screened",
+        "research-reading",
+        "research-deepread",
+        "research-reread",
+        "research-verified"
+      ]
+    },
+    "metadata_verification_status": {
+      "enum": [
+        "verified",
+        "partially_verified",
+        "unverified",
+        "conflict"
+      ]
+    },
+    "reading_card_path": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Workspace-relative path; caller must validate workspace containment before accessing."
+    },
+    "attachment_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_key",
+          "title",
+          "content_type"
+        ],
+        "properties": {
+          "item_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "content_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "zotero_library_kind": {
+      "enum": [
+        null,
+        "users",
+        "groups"
+      ]
+    },
+    "zotero_server_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  }
+}
