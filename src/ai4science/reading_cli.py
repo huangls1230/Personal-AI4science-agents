@@ -6,12 +6,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 import sys
 
 from .contracts import EvidenceReference, ExecutionResult, UsageMetrics, create_artifact, validate_workspace_path
 from .pdf_inspection import PDFInspectionError, extract_chunks, inspect_pdf
-from .reading_output import reading_output_dir, render_reading_card, save_reading_outputs
+from .reading_output import (next_reading_names, render_reading_card,
+                             render_template_reading_card, save_reading_outputs)
 
 
 def _root(value):
@@ -64,7 +66,9 @@ def main(argv=None):
     group.add_argument('--record')
     final.add_argument('--index', type=int, default=0)
     final.add_argument('--analysis', required=True, help='Workspace-relative JSON written by the analyzing agent')
-    final.add_argument('--output-dir', help='Workspace-relative directory; default uses stable paper ID')
+    final.add_argument('--output-dir', help='Workspace-relative directory; default is projects/<project-id>/reading-notes')
+    final.add_argument('--project-id', default='default', help='Portable project identifier, default: default')
+    final.add_argument('--template', default='templates/literature/reading-note.md', help='Project-relative Markdown template')
     final.add_argument('--task-id', required=True)
     args = parser.parse_args(argv)
     try:
@@ -130,15 +134,26 @@ def main(argv=None):
                     raise ValueError('claim excerpt not present in the available abstract')
         default_paper_id = source.sha256 if args.pdf else (f"doi:{row['doi'].strip().lower()}" if isinstance(row.get('doi'), str) and row['doi'].strip() else f'search:{source.sha256}:{args.index}')
         paper_id = analysis.get('paper_id') or default_paper_id
-        output_dir = args.output_dir or reading_output_dir(paper_id)
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,79}', args.project_id):
+            raise ValueError('project-id must contain only letters, digits, hyphens and underscores')
+        output_dir = args.output_dir or f'projects/{args.project_id}/reading-notes'
+        card_filename, result_filename = next_reading_names(root, output_dir, paper_id)
+        project_root = Path(__file__).resolve().parents[2]
+        template_path = validate_workspace_path(project_root, args.template, must_exist=True)
+        if template_path.stat().st_size > 1_000_000:
+            raise ValueError('template exceeds 1 MB')
+        template = template_path.read_text(encoding='utf-8')
         meta = dict(analysis.get('metadata', {}))
         if not args.pdf:
             for field in ('title', 'authors', 'year', 'doi'):
                 meta[field] = row.get(field)
         # Frontmatter is a local reading stage, never an assertion of Zotero state or comprehension.
         meta.update(source_pdf=source_path if args.pdf else None, source_hash=source.sha256,
-                    evidence_scope=scope, reading_status='research-reading')
-        card = render_reading_card(meta, analysis.get('sections', {}))
+                    evidence_scope=scope, reading_status='research-reading',
+                    related_research_project=args.project_id)
+        sections = analysis.get('sections', {})
+        card = render_template_reading_card(template, meta, sections, analysis.get('claim_evidence', []))
+        validation_card = render_reading_card(meta, sections)
         usage = UsageMetrics()
         references = [EvidenceReference(source, 'Authorized source document', 'PDF physical pages' if args.pdf else f'SearchResult index {args.index}').to_dict()]
         zotero_key = meta.get('zotero_item_key')
@@ -153,13 +168,15 @@ def main(argv=None):
         result = {'schema_version': '1.0', 'task_id': args.task_id, 'paper_id': paper_id,
                   'zotero_item_key': zotero_key, 'source_document': source.to_dict(), 'document_hash': source.sha256,
                   'reading_mode': mode, 'evidence_scope': scope, 'analysis_status': analysis.get('analysis_status', 'draft'),
-                  'reading_card_path': output_dir.rstrip('/') + '/reading_card.md', 'evidence_references': references,
+                  'reading_card_path': output_dir.rstrip('/') + '/' + card_filename, 'evidence_references': references,
                   'limitations': analysis.get('limitations', []), 'unresolved_questions': analysis.get('unresolved_questions', []),
                   'suggested_next_actions': analysis.get('suggested_next_actions', []), 'suggested_zotero_status': suggestion,
                   'usage_metrics': usage.to_dict(), 'execution': ExecutionResult(task_id=args.task_id, executor='reading_cli',
                         status='completed', usage_metrics=usage).to_dict(), 'citation_handoff': handoff,
                   'claim_evidence': analysis.get('claim_evidence', [])}
-        card_ref, result_ref = save_reading_outputs(root, output_dir, result, card, pages=pages)
+        card_ref, result_ref = save_reading_outputs(root, output_dir, result, card, pages=pages,
+                                                   card_filename=card_filename, result_filename=result_filename,
+                                                   deepread_validation_card=validation_card)
         print(json.dumps({'status': 'completed', 'analysis_status': result['analysis_status'],
                           'evidence_scope': scope, 'output_artifacts': [card_ref, result_ref]}, ensure_ascii=False))
         return 0

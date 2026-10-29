@@ -31,7 +31,7 @@ def validate_citation_result(result: dict[str, Any], workspace_root: Path, *,
         if not isinstance(result[name], list) or any(not isinstance(v, dict) for v in result[name]):
             raise ValueError(f'{name} must be a list of objects')
     if result['applied_changes']:
-        raise ValueError('applied changes are unsupported: Zotero and Vault writes are not implemented')
+        raise ValueError('applied changes are unsupported: Zotero writes are not implemented')
     for name in ('warnings', 'errors'):
         if not isinstance(result[name], list) or any(not isinstance(v, str) or not v.strip() for v in result[name]):
             raise ValueError(f'{name} must be a list of nonempty strings')

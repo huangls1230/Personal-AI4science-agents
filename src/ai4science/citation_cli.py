@@ -230,7 +230,7 @@ def main(argv=None):
                                         metadata_verification_status=record['metadata_verification_status'])
             ref = save_link_record(root, args.output, mapping)
             result = _result(root, args.task_id, 'link', records=[record], artifacts=[ref],
-                             proposals=[mapping], warnings=['Workspace mapping requires review; source library identity is not independently verified. No external vault was modified.'] + _identity_warnings(record['zotero_server_id']))
+                             proposals=[mapping], warnings=['Workspace mapping requires review; source library identity is not independently verified.'] + _identity_warnings(record['zotero_server_id']))
         print(json.dumps(result, ensure_ascii=False))
         return 0 if result['execution_status'] == 'completed' else 2
     except (ZoteroError, ValueError, OSError, json.JSONDecodeError) as exc:

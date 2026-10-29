@@ -1,0 +1,146 @@
+{
+  "research_task": {
+    "task_id": "tsf-mas-literature-discovery",
+    "objective": "Discover and screen TSF and MAS literature, prioritizing forecasting for coordination; defer full reading until user confirmation.",
+    "task_type": "literature_discovery",
+    "required_capabilities": [
+      "public literature search",
+      "metadata verification",
+      "candidate screening"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "codex_orchestrator_web",
+    "input_artifacts": [],
+    "output_artifacts": [
+      "projects/tsf-mas-literature/discovery-report.md"
+    ],
+    "status": "completed",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "execution_request": {
+    "task": {
+      "task_id": "tsf-mas-literature-discovery",
+      "objective": "Discover and screen TSF and MAS literature, prioritizing forecasting for coordination; defer full reading until user confirmation.",
+      "task_type": "literature_discovery",
+      "required_capabilities": [
+        "public literature search",
+        "metadata verification",
+        "candidate screening"
+      ],
+      "complexity": "complex",
+      "sensitivity": "public",
+      "executor": "codex_orchestrator_web",
+      "input_artifacts": [],
+      "output_artifacts": [
+        "projects/tsf-mas-literature/discovery-report.md"
+      ],
+      "status": "completed",
+      "idempotency_key": null,
+      "schema_version": "1.0"
+    },
+    "executor": "codex_orchestrator_web",
+    "model": null,
+    "attempt": 1,
+    "schema_version": "1.0"
+  },
+  "execution_results": [
+    {
+      "task_id": "tsf-mas-literature-discovery",
+      "executor": "codex_orchestrator_web",
+      "status": "completed",
+      "summary": "13 screened candidates; evidence and coverage limitations recorded; user choice of three pending.",
+      "output_artifacts": [
+        {
+          "path": "projects/tsf-mas-literature/discovery-report.md",
+          "sha256": "e70ba119bcac3e7a58a8d03f082c57ae9a0e0f50ca47b0c9de193ce2e6577da3",
+          "schema_version": "1.0"
+        }
+      ],
+      "evidence": [],
+      "errors": [],
+      "usage_metrics": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "token_measurement": "unknown",
+        "cost": null,
+        "currency": null,
+        "model_calls": null,
+        "input_bytes": null,
+        "output_bytes": null,
+        "schema_version": "1.0"
+      },
+      "quality_status": "not_reviewed",
+      "approval_status": "pending",
+      "schema_version": "1.0"
+    },
+    {
+      "task_id": "tsf-mas-configured-search",
+      "executor": "literature_search",
+      "status": "blocked",
+      "summary": "Configured role exists, but native spawn interface cannot select or prove invocation of role.",
+      "output_artifacts": [],
+      "evidence": [],
+      "errors": [
+        "No selectable configured role or role-specific invocation event available in this session."
+      ],
+      "usage_metrics": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "token_measurement": "unknown",
+        "cost": null,
+        "currency": null,
+        "model_calls": null,
+        "input_bytes": null,
+        "output_bytes": null,
+        "schema_version": "1.0"
+      },
+      "quality_status": "not_reviewed",
+      "approval_status": "not_required",
+      "schema_version": "1.0"
+    },
+    {
+      "task_id": "tsf-mas-discovery",
+      "executor": "literature_search_cli",
+      "status": "blocked",
+      "summary": "Crossref and arXiv requests returned network or timeout errors; no records.",
+      "output_artifacts": [
+        {
+          "path": "projects/tsf-mas-literature/search-cli/search_results.json",
+          "sha256": "32f6ae71e01ba33840272ef38d83588bac9cdf347a9e505fded90ccc1dfaed40",
+          "schema_version": "1.0"
+        },
+        {
+          "path": "projects/tsf-mas-literature/search-cli/search_report.md",
+          "sha256": "a26cdcdca64930ba8b52811dceaa0a3cd0a74d846ea3337aa7cb0dfd2e4b1176",
+          "schema_version": "1.0"
+        }
+      ],
+      "evidence": [],
+      "errors": [
+        "crossref: network or timeout error",
+        "arxiv: network or timeout error"
+      ],
+      "usage_metrics": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "token_measurement": "unknown",
+        "cost": null,
+        "currency": null,
+        "model_calls": 0,
+        "input_bytes": null,
+        "output_bytes": null,
+        "schema_version": "1.0"
+      },
+      "quality_status": "not_reviewed",
+      "approval_status": "not_required",
+      "schema_version": "1.0"
+    }
+  ],
+  "notes": [
+    "Native delegation and Python CLI do not automatically use BudgetGuard.",
+    "Web evidence is linked in the report; external pages are not represented as workspace EvidenceReference artifacts.",
+    "Unknown model and token usage are not inferred."
+  ]
+}

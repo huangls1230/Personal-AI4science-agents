@@ -4,12 +4,20 @@ import unittest
 from pathlib import Path
 
 from ai4science.citation_links import (apply_status_transition, get_reading_status,
-    link_reading_card, propose_status_transition, save_link_record)
+    link_reading_card, propose_status_transition, save_link_record, _card_frontmatter)
 from ai4science.contracts import ExecutionResult, UsageMetrics, create_artifact
 from ai4science.reading_output import render_reading_card, save_reading_outputs
 
 
 class CitationLinkTests(unittest.TestCase):
+    def test_custom_yaml_fields_do_not_prevent_reading_managed_identity(self):
+        frontmatter = '---\ntags:\n  - custom\nextra:\n  nested: value\nzotero_item_key: "ABCD1234"\ncitekey: null\ndoi: "10.1234/example"\n---\n'
+        values = _card_frontmatter(frontmatter)
+        self.assertEqual(values['zotero_item_key'], 'ABCD1234')
+        self.assertEqual(values['doi'], '10.1234/example')
+        with self.assertRaisesRegex(ValueError, 'duplicate'):
+            _card_frontmatter(frontmatter.replace('citekey: null', 'zotero_item_key: "OTHER123"'))
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
@@ -79,7 +87,8 @@ class CitationLinkTests(unittest.TestCase):
             self.assertEqual(candidate['link_status'], 'requires_review')
             self.assertFalse(candidate['source_identity_verified'])
             self.assertIn('does not identify', candidate['link_review_reason'])
-        self.assertIsNone(mapping['obsidian_note_path'])
+        self.assertNotIn('obsidian_note_path', mapping)
+        self.assertNotIn('vault_status', mapping)
         ref = save_link_record(self.root, 'notes/link.json', mapping)
         self.assertEqual(json.loads((self.root / ref['path']).read_text()), mapping)
         with self.assertRaises(FileExistsError):

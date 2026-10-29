@@ -32,7 +32,7 @@ BBT 只使用其官方 JSON-RPC 的只读能力；未安装或不可用返回 bl
 
 状态工具识别 `research-unread`、`research-screened`、`research-reading`、`research-deepread`、`research-reread` 和 `research-verified`，生成版本、旧标签与目标变化的 dry-run，保留其他用户标签。`research-verified` 需要明确确认用户理解；一个 CLI 标志只记录调用方声明，并非独立证明。`apply_status_transition` 和所有 Zotero 写入始终 blocked，即使已有批准；目前没有申请 API key、执行授权、调用写入端点或记录真实变更。版本冲突路径仅做模拟测试，真实并发写入未测试。[Zotero 10 Local API](https://www.zotero.org/support/dev/web_api/v3/local_api) 支持授权写入并不等于用户允许任何特定操作，未来需要分别实现并审查两层授权、服务端身份、版本前置条件、凭据保护和审计。
 
-Citation 的关联记录使用馆藏类型、library ID、Item Key、可取得的 server ID、DOI、阅读卡片和文件哈希；缺失服务器身份时不声称完整的全局身份。ReadingResult 本身不能证明卡片来自哪个库，关联始终标记为需要人工复核。没有配置或检查外部 Obsidian vault，也不解析或修改其 YAML 或正文；工作区映射是 vault 尚未连接时的交接，不代表 Obsidian 已打通。Reading CLI 的 Zotero 读取桥接尚未接入。
+Citation 的关联记录使用馆藏类型、library ID、Item Key、可取得的 server ID、DOI、Markdown 阅读笔记和文件哈希；缺失服务器身份时不声称完整的全局身份。ReadingResult 本身不能证明笔记来自哪个库，关联始终标记为需要人工复核。关联限于项目内部，不连接 Obsidian，也不解析或修改外部笔记；用户可自行将 Markdown 导入 Obsidian。Reading CLI 的 Zotero 读取桥接尚未接入。
 
 外部数据、论文、HTML 和 Agent 结果视为不可信数据。受控路径和服务端限制不能替代操作系统隔离；调用前主控应检查权限及敏感数据外传。CLI 的 token 与成本保持 unknown，现有项目 BudgetGuard 不自动约束此 CLI 或 Codex 内部消耗。
 

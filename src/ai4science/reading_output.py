@@ -202,6 +202,120 @@ def render_reading_card(metadata: dict[str, Any], sections: dict[str, str]) -> s
     return '\n'.join(lines)
 
 
+
+# Maps the existing user template headings to supplied analysis fields. A custom
+# template may omit headings; any unmatched analysis is appended explicitly.
+_TEMPLATE_SECTIONS = {
+    '核心摘要': ('Paper Overview', 'Core Contributions'),
+    '研究问题': ('Research Background', 'Research Question', 'Claimed Research Gap'),
+    '核心方法与技术': ('Methodology', 'Algorithms / Architecture'),
+    '实验设计与结果': ('Experimental Setup', 'Results'),
+    '论点与证据分析': ('Claim–Evidence Table',),
+    '批判性分析': ('Critical Analysis', 'Limitations'),
+    '与我的研究的联系': ('Connection to My Research',),
+    '潜在研究方向': ('Candidate Research Opportunities',),
+    '我的个人思考': ('Personal Notes', 'Open Questions'),
+    '后续阅读任务': ('Next Reading Action', 'Mentor Questions'),
+}
+
+
+def render_template_reading_card(template: str, metadata: dict[str, Any],
+                                 sections: dict[str, str], claims: list[dict]) -> str:
+    """Populate metadata and append supplied analysis without altering the template file.
+
+    Template frontmatter must be a simple YAML mapping. Its managed keys are
+    rewritten as JSON-compatible YAML; unmanaged entries are preserved verbatim.
+    """
+    # Reuse existing input validation, including a fixed set of analysis keys.
+    render_reading_card(metadata, sections)
+    validate_claim_evidence(claims)
+    if not isinstance(template, str) or len(template.encode('utf-8')) > 1_000_000:
+        raise ValueError('template is invalid or exceeds 1 MB')
+    match = re.match(r'\A\s*---[ \t]*\r?\n(.*?)\r?\n---[ \t]*(?:\r?\n|$)', template, re.S)
+    if not match:
+        raise ValueError('template must start with YAML frontmatter')
+    managed = {key: metadata.get(key) for key in _METADATA}
+    managed['research_project'] = metadata.get('related_research_project')
+    if managed.get('tags') is None:
+        managed['tags'] = ['literature']
+    # Preserve unknown YAML entries; remove managed multiline values and re-emit.
+    raw = match.group(1).splitlines()
+    retained: list[str] = []
+    skipping = False
+    seen: set[str] = set()
+    for line in raw:
+        key_match = re.match(r'^([A-Za-z_][A-Za-z0-9_-]*):(?:\s|$)', line)
+        if key_match:
+            key = key_match.group(1)
+            if key in seen:
+                raise ValueError(f'duplicate template frontmatter key: {key}')
+            seen.add(key)
+            skipping = key in managed
+        if not skipping:
+            retained.append(line)
+    front = ['---'] + retained
+    for key, value in managed.items():
+        if key not in _METADATA and key != 'research_project':
+            raise ValueError(f'unsupported metadata key: {key}')
+        front.append(f'{key}: {json.dumps(value, ensure_ascii=False)}')
+    front.append('---')
+
+    evidence_lines = []
+    for entry in claims:
+        details = []
+        if entry['pdf_page'] is not None:
+            details.append(f"PDF page {entry['pdf_page']}")
+        for field, label in (('printed_page', 'printed page'), ('section', 'section'),
+                             ('figure', 'figure'), ('table', 'table'), ('equation', 'equation')):
+            if entry[field]:
+                details.append(f"{label}: {entry[field]}")
+        details.append('PDF 页摘录已匹配；其他定位未自动核验' if entry['location_status'] == 'verified' else '定位未验证')
+        quote = f"；原文摘录：{entry['excerpt']}" if entry['excerpt'] else ''
+        evidence_lines.append(f"- {entry['claim']}（{entry['kind']}；{'；'.join(details)}{quote}）")
+
+    body = template[match.end():]
+    if isinstance(metadata.get('title'), str) and metadata['title'].strip():
+        title = ' '.join(metadata['title'].split())
+        body = re.sub(r'^# 论文标题[ \t]*$', lambda _: '# ' + title, body, count=1, flags=re.M)
+    used: set[str] = set()
+    evidence_written = False
+    def add_under_heading(m: re.Match) -> str:
+        nonlocal evidence_written
+        heading = re.sub(r'^\d+[.、]\s*', '', m.group(1).strip())
+        keys = _TEMPLATE_SECTIONS.get(heading, ())
+        additions = []
+        for key in keys:
+            if sections.get(key, '').strip() and key not in used:
+                value = sections[key].strip()
+                separator = '\n\n' if '\n' in value else ' '
+                additions.append(f"**{dict(_SECTIONS)[key]}：**{separator}{value}")
+                used.add(key)
+        if heading == '论点与证据分析' and evidence_lines and not evidence_written:
+            additions.extend(evidence_lines)
+            evidence_written = True
+        return m.group(0) + ('\n\n' + '\n\n'.join(additions) + '\n' if additions else '')
+    body = re.sub(r'^##[ \t]+(.+?)[ \t]*$', add_under_heading, body, flags=re.M)
+    extra = [f"### {title}\n\n{sections[key].strip()}" for key, title in _SECTIONS
+             if key not in used and sections.get(key, '').strip()]
+    if evidence_lines and not evidence_written:
+        extra.append('### 论点与证据定位\n\n' + '\n'.join(evidence_lines))
+    if extra:
+        body += '\n\n## 补充科研分析\n\n' + '\n\n'.join(extra) + '\n'
+    return '\n'.join(front) + '\n' + body.lstrip('\r\n')
+
+
+def next_reading_names(workspace_root: Path, output_dir: str, paper_id: str) -> tuple[str, str]:
+    """Find an unused pair; exclusive creation remains the final race guard."""
+    _string(paper_id, 'paper_id')
+    stem = sha256(paper_id.strip().encode('utf-8')).hexdigest()
+    for version in range(1, 10001):
+        suffix = '' if version == 1 else f'-v{version}'
+        card, result = f'{stem}{suffix}.md', f'{stem}{suffix}.json'
+        if not any(validate_workspace_path(workspace_root, f'{output_dir}/{name}').exists()
+                   for name in (card, result)):
+            return card, result
+    raise ValueError('too many versions for this paper')
+
 def _validate_deepread_card(card: str) -> None:
     """Reject missing and obvious placeholder sections, not assess scientific quality."""
     required = ('论文概览', '研究问题', '研究方法', '论点与证据', '局限')
@@ -223,7 +337,7 @@ def _validate_deepread_card(card: str) -> None:
             raise ValueError(f'research-deepread card section {section} is empty or too short')
 
 
-def save_reading_outputs(workspace_root: Path, output_dir: str, result: dict[str, Any], card: str, *, pages: list[dict] | None = None) -> tuple[dict, dict]:
+def save_reading_outputs(workspace_root: Path, output_dir: str, result: dict[str, Any], card: str, *, pages: list[dict] | None = None, card_filename: str = 'reading_card.md', result_filename: str = 'reading_result.json', deepread_validation_card: str | None = None) -> tuple[dict, dict]:
     """Create reading_card.md and reading_result.json exactly once, without overwrite.
 
     A repeated execution raises FileExistsError and preserves every existing byte.
@@ -232,14 +346,19 @@ def save_reading_outputs(workspace_root: Path, output_dir: str, result: dict[str
     """
     if not isinstance(card, str) or not card.strip():
         raise ValueError('card must be non-empty')
-    card_path = output_dir.rstrip('/') + '/reading_card.md'
-    result_path = output_dir.rstrip('/') + '/reading_result.json'
+    for filename in (card_filename, result_filename):
+        if not isinstance(filename, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+', filename) or filename in ('.', '..'):
+            raise ValueError('invalid output filename')
+    if card_filename == result_filename:
+        raise ValueError('card and result filenames must differ')
+    card_path = output_dir.rstrip('/') + '/' + card_filename
+    result_path = output_dir.rstrip('/') + '/' + result_filename
     if result.get('reading_card_path') != card_path:
         raise ValueError('reading_card_path must identify the requested output card')
     result = copy.deepcopy(result)
     validate_reading_result(result, workspace_root, verify_files=False)
     if result['suggested_zotero_status'] == 'research-deepread':
-        _validate_deepread_card(card)
+        _validate_deepread_card(deepread_validation_card if deepread_validation_card is not None else card)
     if any(c['location_status'] == 'verified' for c in result['claim_evidence']):
         if pages is None or result['source_document'] is None:
             raise ValueError('verified claim location requires source and extracted PDF pages')

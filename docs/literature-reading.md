@@ -9,7 +9,7 @@ Python 3.11+；PDF 输入需要可选依赖 `pypdf>=6,<7`，见 `pyproject.toml`
 - PDF：将用户授权读取的 PDF 放入项目 `workspace/`，使用相对于该目录的路径。外部路径不能直接绕过 workspace 限制；仅在有授权时复制，保留来源和许可信息。检查路径、大小、PDF 头、解析器、页数及加密状态；真实页面按 1 开始计数。
 - Search：`abstract` / `finalize --record` 接收搜索结果 JSON 和记录索引。仅有摘要时分析范围固定为 abstract；来源记录和摘要不等于全文。若已授权获得 PDF，使用 `--pdf` 分开读取，不自动下载来源链接。
 - Zotero：Reading 的 `zotero --item-key ...` 桥接尚未接入，因此明确返回 blocked；Citation 已有独立的只读适配器，详见 [Citation 使用说明](literature-citation.md)。Reading 不会假称附件已解析。
-- Obsidian：项目没有配置或实现 vault 读写，本轮不对外部 vault 作任何操作；本地卡片是可人工导入的 Markdown。`propose_vault_export` 明确返回 blocked 并保留本地产物，未实际测试外部权限。不要假设用户的机器不存在其他 vault。
+- Markdown：笔记保存在项目 workspace，由用户自行决定是否导入 Obsidian；本流程不使用 Obsidian Plugin、MCP 或 API，也不自动读写或同步 vault。旧 `propose_vault_export` 占位函数及其测试仍保留，函数明确返回 blocked；它不是文献工作流的一部分。
 
 ## Inspection → Analysis → Finalize
 
@@ -24,14 +24,14 @@ PYTHONPATH=src python3 -m ai4science.reading_cli --workspace workspace \
 
 PYTHONPATH=src python3 -m ai4science.reading_cli --workspace workspace \
   finalize --pdf inputs/paper.pdf --analysis runs/example/analysis.json \
-  --task-id read-example
+  --task-id read-example --project-id my-project
 ```
 
 Inspection 摘要返回 SHA-256、页数、未验证的 PDF 内嵌标题／作者候选、页文本状态、启发式章节与文本图表标记；每次只返回最多 100 个章节和标签，以及最多 10 个用户指定页、50,000 字符。每页文字以 physical PDF page 和提取文本偏移定位。`extract_section_chunks` 按猜测的标题边界分段；标题和边界须回查，复杂布局不保证准确。
 
 `analysis.json` 由实际阅读论文的 Codex 或人工准备，不由脚本编造。它包含 `paper_id`、`metadata`、`sections`、`claim_evidence`、`limitations`、`unresolved_questions`、`suggested_next_actions` 和可选状态建议；可参考真实示例的 `analysis.json`。`sections` 使用 `reading_output.py` 定义的英文章节键。四类 claim 标签为 `evidence`、`author_interpretation`、`agent_inference`、`speculation`。Verified 的物理页定位必须有逐字摘录，finalize 从 PDF 重新提取后对照；它只确认摘录在提取的该页出现，章节、印刷页、图表、公式、语义与科学正确性须独立检查。独立调用 `validate_reading_result` 只检查结构和文件哈希，不重新提取 PDF 或比对摘录；需要显式重提取并调用 `validate_claim_evidence`。摘要模式的论据摘录须来自实际摘要。自动提取无文字页会标记不完整，但部分可提取文字不证明图像或表格可读。工具保守将 PDF 模式的范围记为 `partial_text`；它不代表已阅读完整正文。
 
-默认以 `paper_id` 的稳定哈希确定 workspace 笔记目录，也可以明确指定 `--output-dir`。两个输出文件以独占创建，重复执行返回错误并保留原有笔记及个人批注；不会自动修改现有 Agent 区域或外部 vault。卡片模板见 `.agents/skills/paper-deep-reading/templates/reading-card.md`。Result 包含既有 `ExecutionResult`、原文哈希、证据引用、范围、局限、问题和可选 Citation 交接；此处 `execution.status=completed` 仅表示文件生成完成，`analysis_status` 是独立判断，质量和人工批准均未自动通过。生成工具不会确定正文论述是否被引用支持，主控必须检查。
+模板默认使用 `templates/literature/reading-note.md`，可用 `--template` 指定项目内模板。默认输出目录为 `workspace/projects/<project_id>/reading-notes/`，不指定 `--project-id` 时为 `default`；`--output-dir` 可指定 workspace 内相对目录，当前不支持 workspace 外路径，即使该路径已获授权也需要先导入 workspace。文件名使用 `paper_id` 的稳定标识，重复生成创建新版本而不覆盖原文件。Markdown 带 YAML frontmatter，保留提供的元数据、Zotero Item Key 和已知 Citation Key；缺失的 key 不会臆造。CLI 输出实际文件路径和 SHA-256，旧模板 `.agents/skills/paper-deep-reading/templates/reading-card.md` 保留未删除。Result 包含既有 `ExecutionResult`、原文哈希、证据引用、范围、局限、问题和可选 Citation 交接；此处 `execution.status=completed` 仅表示文件生成完成，`analysis_status` 是独立判断，质量和人工批准均未自动通过。生成工具不会确定正文论述是否被引用支持，主控必须检查。
 
 解析结果缓存位于 workspace，键包含 PDF hash、解析器及 pypdf 版本；缓存可能包含论文文本，应受适当访问控制。缓存数据可被同权限用户篡改，结构检查不证明其等同于源 PDF。数据量及逐页字符有上限，但解析器与路径检查不是处理恶意 PDF 的 OS 沙箱；对不可信 PDF 使用适当隔离。无 OCR、图像语义识别、公式自动推导或独立 DOI 核验。`UsageMetrics` 默认为 unknown；该工具和原生会话不会自动受项目 `BudgetGuard` 约束。
 

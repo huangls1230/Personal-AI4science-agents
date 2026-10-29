@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "status": "blocked",
+  "generated_at": "2026-10-29T02:44:44.919656+00:00",
+  "query_terms": [
+    "forecasting",
+    "agent"
+  ],
+  "sources": [
+    {
+      "source": "crossref",
+      "query": "demand forecasting multi agent reinforcement learning scheduling",
+      "retrieved_at": "2026-10-29T02:44:44.907941+00:00",
+      "status": "error",
+      "error": "network or timeout error",
+      "page": 1,
+      "limit": 10,
+      "has_more": false,
+      "cached": false
+    },
+    {
+      "source": "crossref",
+      "query": "time series forecasting multi agent collaboration",
+      "retrieved_at": "2026-10-29T02:44:44.915397+00:00",
+      "status": "error",
+      "error": "network or timeout error",
+      "page": 1,
+      "limit": 10,
+      "has_more": false,
+      "cached": false
+    },
+    {
+      "source": "arxiv",
+      "query": "all:\"multi agent\" AND all:\"forecasting\"",
+      "retrieved_at": "2026-10-29T02:44:44.917563+00:00",
+      "status": "error",
+      "error": "network or timeout error",
+      "page": 1,
+      "limit": 10,
+      "has_more": false,
+      "cached": false
+    }
+  ],
+  "malformed_records_skipped": 0,
+  "unique_count_before_limit": 0,
+  "returned_count": 0,
+  "max_results": 30,
+  "results": []
+}

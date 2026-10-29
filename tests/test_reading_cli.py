@@ -34,14 +34,18 @@ class ReadingCliTests(unittest.TestCase):
     def test_abstract_only_and_duplicate_preserves_card(self):
         args = self.base + ['finalize', '--record', 'search.json', '--analysis', 'analysis.json',
                             '--output-dir', 'reading', '--task-id', 'test']
-        with contextlib.redirect_stdout(io.StringIO()):
+        with contextlib.redirect_stdout(io.StringIO()) as first_output:
             self.assertEqual(main(args), 0)
-        result = json.loads((self.root / 'reading/reading_result.json').read_text())
+        first = json.loads(first_output.getvalue())['output_artifacts']
+        result_ref = next(ref for ref in first if ref['path'].endswith('.json'))
+        result = json.loads((self.root / result_ref['path']).read_text())
         self.assertEqual((result['reading_mode'], result['evidence_scope']), ('abstract', 'abstract'))
-        card = self.root / 'reading/reading_card.md'
+        card = self.root / next(ref['path'] for ref in first if ref['path'].endswith('.md'))
         with card.open('a') as f: f.write('\nuser comment')
-        with contextlib.redirect_stderr(io.StringIO()):
-            self.assertEqual(main(args), 2)
+        with contextlib.redirect_stdout(io.StringIO()) as second_output:
+            self.assertEqual(main(args), 0)
+        second = json.loads(second_output.getvalue())['output_artifacts']
+        self.assertNotEqual(str(card), str(self.root / next(ref['path'] for ref in second if ref['path'].endswith('.md'))))
         self.assertIn('user comment', card.read_text())
 
     def test_misreported_abstract_and_fabricated_excerpt_are_blocked(self):

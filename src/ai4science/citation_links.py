@@ -1,6 +1,6 @@
 """Safe, local-only reading-status proposals and paper identity links.
 
-This module does not modify Zotero or Obsidian. Workspace path checks follow the
+This module does not modify Zotero or external notes. Workspace path checks follow the
 project contract and are not an OS sandbox against concurrent symlink changes.
 """
 from __future__ import annotations
@@ -107,21 +107,28 @@ def apply_status_transition(proposal: dict, *, user_approved: bool = False,
 
 
 def _card_frontmatter(card: str) -> dict[str, Any]:
-    """Read the JSON-valued YAML subset emitted by our Reading Agent only.
+    """Read managed JSON-valued YAML fields; ignore unrelated template entries.
 
-    General user-authored YAML is intentionally not parsed; unsupported values are
-    reported, never interpreted or rewritten.
+    Reading emits managed values as JSON scalars (valid YAML). Other template
+    entries may use normal YAML, including nested lists, and are not interpreted.
     """
     lines = card.splitlines()
     if not lines or lines[0] != '---':
         raise ValueError('missing reading-card frontmatter')
     values: dict[str, Any] = {}
+    managed = {'zotero_item_key', 'citekey', 'doi', 'source_pdf'}
+    seen: set[str] = set()
     for line in lines[1:]:
         if line == '---':
             return values
         name, sep, value = line.partition(':')
-        if not sep or not name or name in values:
-            raise ValueError('unsupported or duplicate frontmatter field')
+        if not sep or not name or name[0].isspace() or name.startswith('#'):
+            continue
+        if name in seen:
+            raise ValueError('duplicate frontmatter field')
+        seen.add(name)
+        if name not in managed:
+            continue
         try:
             values[name] = json.loads(value.strip())
         except (ValueError, TypeError) as exc:
@@ -174,11 +181,11 @@ def link_reading_card(workspace_root: Path, reading_result: dict, *,
             'link_status': 'requires_review', 'source_identity_verified': False,
             'link_review_reason': ('ReadingResult provides an item key but does not identify its Zotero library or server; '
                                    'the proposed association requires user review.'),
-            'citation_key': citation_key, 'doi': doi, 'obsidian_note_path': None,
+            'citation_key': citation_key, 'doi': doi,
             'reading_card': refs[0].to_dict(), 'source_pdf_path': source['path'] if source and reading_result['reading_mode'] != 'abstract' else None,
             'metadata_verification_status': metadata_verification_status,
             'frontmatter_fields': {k: meta.get(k) for k in ('zotero_item_key', 'citekey', 'doi', 'source_pdf')},
-            'vault_status': 'not_connected', 'note_modified': False}
+            'note_modified': False}
 
 
 def save_link_record(workspace_root: Path, path: str, mapping: dict) -> dict:
