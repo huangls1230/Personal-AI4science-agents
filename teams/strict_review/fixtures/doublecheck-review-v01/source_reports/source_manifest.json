@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Synthetic, manually authored prior reviewer records for adjudication testing; not actual prior subagent outputs. One reviewer record intentionally contains an erroneous inference. The numerical recalculation was actually executed on the authorized synthetic CSV.",
+  "manuscript_path": "runs/doublecheck-review-v01/inputs/manuscript.md",
+  "manuscript_sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9",
+  "data_path": "runs/doublecheck-review-v01/inputs/forecast.csv",
+  "data_sha256": "b22ea2986a483f3ddb1ce2bf36fdf26ec444bbec3c47ea87b0fbbffcef079f0b",
+  "reports": [
+    {
+      "reviewer_role": "review_method",
+      "finding_path": "runs/doublecheck-review-v01/sources/method_findings.json",
+      "manuscript_sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+    },
+    {
+      "reviewer_role": "review_statistics",
+      "finding_path": "runs/doublecheck-review-v01/sources/statistics_findings.json",
+      "manuscript_sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+    },
+    {
+      "reviewer_role": "review_consistency",
+      "finding_path": "runs/doublecheck-review-v01/sources/consistency_findings.json",
+      "manuscript_sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+    }
+  ],
+  "recalculation_report_path": "runs/doublecheck-review-v01/sources/recalculation_report.json",
+  "calculation_status": "completed",
+  "version_conflict_scenario": {
+    "reviewer_role": "review_consistency",
+    "manuscript_path": "runs/doublecheck-review-v01/sources/manuscript-other-version.md",
+    "manuscript_sha256": "18d373e1f068f0cca9d010105ae5b880737ce63f862b48fec2987b42eb226d19",
+    "interpretation": "Separate negative test; do not merge with current-version review findings."
+  }
+}

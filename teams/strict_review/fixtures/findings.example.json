@@ -1,0 +1,104 @@
+[
+  {
+    "schema_version": "1.0",
+    "reviewer_role": "review_method",
+    "issue_type": "split reporting",
+    "severity": "major",
+    "confidence": "high",
+    "source_location": "Experiments, paragraph 1",
+    "claim_or_observation": "The synthetic manuscript reports MAE 0.4 and states that the split procedure is not described.",
+    "reasoning": "A time-order split cannot be assessed from this text.",
+    "impact": "The evaluation methodology cannot be fully assessed.",
+    "recommended_action": "Ask the authors to report the split and verify it against the underlying experiment.",
+    "additional_material_required": [
+      "Experimental protocol and split data"
+    ],
+    "verification_method": "Read the synthetic manuscript paragraph.",
+    "verification_limitations": "Only the supplied text was inspected; no data, code or replication.",
+    "finding_id": "synthetic-001",
+    "verification_status": "verified",
+    "evidence_location": [
+      {
+        "artifact": {
+          "path": "projects/synthetic/manuscript.md",
+          "sha256": "c15c2c4004b31eac9136780cac2d8fb7551a76a93be903bf125dc76d3c884f05",
+          "schema_version": "1.0"
+        },
+        "description": "Synthetic manuscript text about MAE and the reported split",
+        "locator": "Experiments, paragraph 1",
+        "schema_version": "1.0"
+      }
+    ]
+  },
+  {
+    "schema_version": "1.0",
+    "reviewer_role": "review_method",
+    "issue_type": "split reporting",
+    "severity": "major",
+    "confidence": "low",
+    "source_location": "Experiments, paragraph 1",
+    "claim_or_observation": "A risk of temporal leakage cannot be excluded without the split details.",
+    "reasoning": "The missing split description prevents assessing temporal order; it does not establish leakage.",
+    "impact": "The evaluation methodology cannot be fully assessed.",
+    "recommended_action": "Ask the authors to report the split and verify it against the underlying experiment.",
+    "additional_material_required": [
+      "Experimental protocol and split data"
+    ],
+    "verification_method": "Read the synthetic manuscript paragraph.",
+    "verification_limitations": "Only the supplied text was inspected; no data, code or replication.",
+    "finding_id": "synthetic-002",
+    "verification_status": "potential",
+    "evidence_location": [
+      {
+        "artifact": {
+          "path": "projects/synthetic/manuscript.md",
+          "sha256": "c15c2c4004b31eac9136780cac2d8fb7551a76a93be903bf125dc76d3c884f05",
+          "schema_version": "1.0"
+        },
+        "description": "Synthetic manuscript text about MAE and the reported split",
+        "locator": "Experiments, paragraph 1",
+        "schema_version": "1.0"
+      }
+    ]
+  },
+  {
+    "schema_version": "1.0",
+    "reviewer_role": "review_statistics",
+    "issue_type": "reproducibility",
+    "severity": "major",
+    "confidence": "unknown",
+    "source_location": "Experiments, paragraph 1",
+    "claim_or_observation": "Replication requires unavailable raw data, code and settings.",
+    "reasoning": "No raw data, code or complete experimental settings were supplied for this synthetic example.",
+    "impact": "The reported metric cannot be independently reproduced from the supplied material.",
+    "recommended_action": "Request the data, code and settings when authorized, and assess their availability before attempting reproduction.",
+    "additional_material_required": [
+      "Raw data, code and experimental settings"
+    ],
+    "verification_method": "Not performed; required materials unavailable.",
+    "verification_limitations": "No actual computation or replication was performed.",
+    "finding_id": "synthetic-003",
+    "verification_status": "insufficient_information",
+    "evidence_location": []
+  },
+  {
+    "schema_version": "1.0",
+    "reviewer_role": "review_consistency",
+    "issue_type": "visual figure inspection",
+    "severity": "major",
+    "confidence": "unknown",
+    "source_location": "No figure was provided with the synthetic manuscript",
+    "claim_or_observation": "Visual figures were not checked.",
+    "reasoning": "The figure image was not supplied and could not be inspected.",
+    "impact": "Agreement between visual content, caption and prose remains unassessed.",
+    "recommended_action": "Obtain the authorized image and inspect it before making a visual consistency claim.",
+    "additional_material_required": [
+      "Any applicable figure images and captions"
+    ],
+    "verification_method": "Not performed.",
+    "verification_limitations": "No figure visual inspection was performed.",
+    "finding_id": "synthetic-004",
+    "verification_status": "not_checked",
+    "evidence_location": []
+  }
+]

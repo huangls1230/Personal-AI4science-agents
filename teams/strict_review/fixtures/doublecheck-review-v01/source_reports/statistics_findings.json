@@ -1,0 +1,43 @@
+[
+  {
+    "schema_version": "1.0",
+    "finding_id": "S-01",
+    "reviewer_role": "review_statistics",
+    "issue_type": "rmse_discrepancy",
+    "severity": "major",
+    "confidence": "high",
+    "verification_status": "verified",
+    "source_location": "L23-L23",
+    "claim_or_observation": "The reported RMSE differs from the result calculated from the provided synthetic observations.",
+    "evidence_location": [
+      {
+        "schema_version": "1.0",
+        "artifact": {
+          "schema_version": "1.0",
+          "path": "runs/doublecheck-review-v01/inputs/manuscript.md",
+          "sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+        },
+        "description": "Reported formula and RMSE",
+        "locator": "L23-L23"
+      },
+      {
+        "schema_version": "1.0",
+        "artifact": {
+          "schema_version": "1.0",
+          "path": "runs/doublecheck-review-v01/inputs/forecast.csv",
+          "sha256": "b22ea2986a483f3ddb1ce2bf36fdf26ec444bbec3c47ea87b0fbbffcef079f0b"
+        },
+        "description": "Authorized four synthetic forecast observations",
+        "locator": "L2-L5"
+      }
+    ],
+    "reasoning": "The reported formula and four CSV observations allow a deterministic numerical check.",
+    "impact": "The reported error magnitude is not substantiated by the supplied data.",
+    "recommended_action": "Check the original observations and metric implementation.",
+    "additional_material_required": [
+      "Original experiment protocol and logs"
+    ],
+    "verification_method": "Synthetic review record prepared for adjudication testing; inspect the cited manuscript lines and any calculation evidence.",
+    "verification_limitations": "Only supplied synthetic material; not a real experiment or an assessment of actual investigators."
+  }
+]

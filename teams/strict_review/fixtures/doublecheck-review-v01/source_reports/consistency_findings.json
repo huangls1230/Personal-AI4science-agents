@@ -1,0 +1,74 @@
+[
+  {
+    "schema_version": "1.0",
+    "finding_id": "C-01",
+    "reviewer_role": "review_consistency",
+    "issue_type": "cross_condition_contradiction",
+    "severity": "major",
+    "confidence": "high",
+    "verification_status": "verified",
+    "source_location": "L25-L25",
+    "claim_or_observation": "The proposed coordinator reports contradictory values: 80 and 120 messages.",
+    "evidence_location": [
+      {
+        "schema_version": "1.0",
+        "artifact": {
+          "schema_version": "1.0",
+          "path": "runs/doublecheck-review-v01/inputs/manuscript.md",
+          "sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+        },
+        "description": "Reported scenario A message count",
+        "locator": "L21-L21"
+      },
+      {
+        "schema_version": "1.0",
+        "artifact": {
+          "schema_version": "1.0",
+          "path": "runs/doublecheck-review-v01/inputs/manuscript.md",
+          "sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+        },
+        "description": "Reported scenario B message count",
+        "locator": "L25-L25"
+      }
+    ],
+    "reasoning": "The two values are not numerically equal.",
+    "impact": "The paper cannot consistently report its messaging performance.",
+    "recommended_action": "Correct one value.",
+    "additional_material_required": [
+      "Original experiment protocol and logs"
+    ],
+    "verification_method": "Synthetic review record prepared for adjudication testing; inspect the cited manuscript lines and any calculation evidence.",
+    "verification_limitations": "Only supplied synthetic material; not a real experiment or an assessment of actual investigators."
+  },
+  {
+    "schema_version": "1.0",
+    "finding_id": "C-02",
+    "reviewer_role": "review_consistency",
+    "issue_type": "future_information",
+    "severity": "minor",
+    "confidence": "medium",
+    "verification_status": "potential",
+    "source_location": "L15-L15",
+    "claim_or_observation": "The forecast seems to depend on information described as available after the decision.",
+    "evidence_location": [
+      {
+        "schema_version": "1.0",
+        "artifact": {
+          "schema_version": "1.0",
+          "path": "runs/doublecheck-review-v01/inputs/manuscript.md",
+          "sha256": "2f50d187c8ee773538941fa6c1b16b21ccd038bdd852cc5f388b4dbc41df68c9"
+        },
+        "description": "Forecast input and availability",
+        "locator": "L15-L15"
+      }
+    ],
+    "reasoning": "The method description gives a temporal sequence that warrants clarification.",
+    "impact": "The timing could limit real-time use.",
+    "recommended_action": "Clarify forecast input timing.",
+    "additional_material_required": [
+      "Original experiment protocol and logs"
+    ],
+    "verification_method": "Synthetic review record prepared for adjudication testing; inspect the cited manuscript lines and any calculation evidence.",
+    "verification_limitations": "Only supplied synthetic material; not a real experiment or an assessment of actual investigators."
+  }
+]

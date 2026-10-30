@@ -16,4 +16,5 @@
 
 - 文献检索、筛选、阅读、Zotero 和参考文献使用 [research-literature-workflow](.agents/skills/research-literature-workflow/SKILL.md)：分别按需选择 `literature_search`、`literature_reading`、`literature_citation`，不默认启动整个团队。
 - 结构、术语、语言或完整论文编辑使用 [paper-editing-workflow](.agents/skills/paper-editing-workflow/SKILL.md)：分别按需选择 `paper_structure`、`paper_terminology`、`paper_language`；完整编辑按结构、术语、语言和最终检查的顺序进行。
+- 科研方法、统计、论文一致性、独立复核或完整严格审稿使用 [strict-review-workflow](.agents/skills/strict-review-workflow/SKILL.md)：按需选择 `review_method`、`review_statistics`、`review_consistency`、`review_doublecheck`，完整审稿先进行专业审查再复核；审稿权限、版本和执行方式按实际核验记录。
 - 以明确的 `project_id` 复用已有项目上下文与验证过的 workspace 成果；项目或输入不明确时先澄清。上下文记录、执行和人工批准是不同的状态；“继续”不授权高风险变更。具体约定见 [统一入口](docs/unified-research-workflow.md)。

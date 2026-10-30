@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Strict Review Finding",
+  "description": "A review observation with traceable evidence and an explicitly bounded verification state. Structural validity does not establish scientific correctness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "finding_id", "reviewer_role", "issue_type", "severity",
+    "confidence", "verification_status", "source_location", "claim_or_observation",
+    "evidence_location", "reasoning", "impact", "recommended_action",
+    "additional_material_required", "verification_method", "verification_limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "finding_id": { "$ref": "#/$defs/nonempty" },
+    "reviewer_role": { "enum": ["review_method", "review_statistics", "review_consistency", "review_doublecheck"] },
+    "issue_type": { "$ref": "#/$defs/nonempty" },
+    "severity": { "enum": ["critical", "major", "minor", "suggestion"] },
+    "confidence": { "enum": ["high", "medium", "low", "unknown"] },
+    "verification_status": {
+      "enum": ["verified", "potential", "insufficient_information", "not_checked"],
+      "description": "Verified refers only to the documented observation and method, not all scientific claims or reproducibility."
+    },
+    "source_location": { "$ref": "#/$defs/nonempty" },
+    "claim_or_observation": { "$ref": "#/$defs/nonempty" },
+    "evidence_location": {
+      "description": "Evidence references to authorized workspace artifacts; an empty list is permitted only when not claiming verification or evidence-supported potential.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "reasoning": { "$ref": "#/$defs/nonempty" },
+    "impact": { "$ref": "#/$defs/nonempty" },
+    "recommended_action": { "$ref": "#/$defs/nonempty" },
+    "additional_material_required": { "type": "array", "items": { "$ref": "#/$defs/nonempty" } },
+    "verification_method": { "$ref": "#/$defs/nonempty" },
+    "verification_limitations": { "$ref": "#/$defs/nonempty" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "verification_status": { "enum": ["verified", "potential"] } }, "required": ["verification_status"] },
+      "then": { "properties": { "evidence_location": { "minItems": 1 } } }
+    }
+  ],
+  "$defs": {
+    "nonempty": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact", "description", "locator", "schema_version"],
+      "properties": {
+        "artifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256", "schema_version"],
+          "properties": {
+            "path": { "$ref": "#/$defs/nonempty" },
+            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "schema_version": { "const": "1.0" }
+          }
+        },
+        "description": { "$ref": "#/$defs/nonempty" },
+        "locator": { "$ref": "#/$defs/nonempty" },
+        "schema_version": { "const": "1.0" }
+      }
+    }
+  }
+}

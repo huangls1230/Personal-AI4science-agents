@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "mode": "metric_recalculation",
+  "records": [
+    {
+      "source_data": "runs/doublecheck-review-v01/inputs/forecast.csv",
+      "source_hash": "b22ea2986a483f3ddb1ce2bf36fdf26ec444bbec3c47ea87b0fbbffcef079f0b",
+      "calculation_script": "src/ai4science/statistics_recalculation.py",
+      "script_sha256": "d9811c7fc53a885f6e303f932f3517d1a98b5be8559a06e11e0079a391d21143",
+      "software_versions": {
+        "python": "3.13.18",
+        "dependencies": {}
+      },
+      "execution": {
+        "method": "python_api",
+        "operation": "recalculate_forecast",
+        "parameters": {
+          "actual_column": "actual",
+          "prediction_column": "predicted",
+          "metrics": [
+            "RMSE"
+          ],
+          "unit": "requests per interval",
+          "aggregation": "mean_over_rows",
+          "reported_values": {
+            "RMSE": 1.2
+          },
+          "tolerance": 0.005
+        },
+        "command": null,
+        "random_seed": null,
+        "status": "completed"
+      },
+      "data_checks": {
+        "rows": 4,
+        "missing_values": 0,
+        "non_finite_values": 0,
+        "actual_range": [
+          8.0,
+          12.0
+        ],
+        "prediction_range": [
+          9.0,
+          12.0
+        ],
+        "outliers": "not automatically excluded; inspect range and context"
+      },
+      "calculations": [
+        {
+          "calculation_id": "RMSE",
+          "metric": "RMSE",
+          "formula_or_method": "sqrt(mean((prediction-actual)^2))",
+          "unit": "requests per interval",
+          "reported_value": 1.2,
+          "recalculated_value": 1.5811388300841898,
+          "difference": 0.3811388300841898,
+          "tolerance": 0.005,
+          "status": "difference_detected"
+        }
+      ]
+    }
+  ],
+  "reason": null
+}

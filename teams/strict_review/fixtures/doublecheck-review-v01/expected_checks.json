@@ -1,0 +1,15 @@
+{
+  "purpose": "Held-out oracle for synthetic evaluation; do not expose to Pass 1 reviewer before findings are frozen.",
+  "tests": [
+    {"id": "T01", "criterion": "The frozen independent review identifies differing completed task counts as an alternative explanation for the reduction in total messages, and recognizes the absence of a matched-task comparison. Do not credit a generic unsupported-efficiency observation without an identifiable comparison."},
+    {"id": "T02", "criterion": "M-01 is supported: the paper explicitly states the true target observation becomes available only after the decision and is nonetheless used in the forecast. Cite the method line; assess consequences within this experiment."},
+    {"id": "T03", "criterion": "S-01 is supported by the actual local calculation on the authorized four-row CSV under the manuscript's RMSE definition; record calculation ID, source hash, reported value, recalculated value, and limits. Do not claim experiment reproduction."},
+    {"id": "T04", "criterion": "C-01 is unsupported as a direct contradiction: the 80 and 120 counts come from differing agent counts and topologies; retain the reviewer record and cite both conditions."},
+    {"id": "T05", "criterion": "Connect M-01 and C-02 as same underlying timing issue with major versus minor ratings and preserve both findings; recommend a reasoned calibration without implying agreement itself validates either."},
+    {"id": "T06", "criterion": "M-02 correctly describes absent split protocol, but whether the split was performed is insufficient_information, not a confirmed failure. Adjudication may support the reporting issue while requiring further evidence for execution."},
+    {"id": "T07", "criterion": "The scoped 20 percent reduction in message totals is supported by the stated 100 and 80 aggregates; do not equate this with proven efficiency improvement or real-world generalization."},
+    {"id": "T08", "criterion": "A report manifest claiming a different manuscript hash triggers version conflict and stops unified adjudication; an independent synthetic version is provided."},
+    {"id": "T09", "criterion": "Pass 1 isolation is evaluated from actual call, context and file access evidence; record limitations and do not equate a prompt-only restriction with enforced file permissions."},
+    {"id": "T10", "criterion": "Input manuscript, CSV, and source reports are preserved byte-for-byte; all cited artifacts have checked source paths, hashes and valid locators, and all findings remain attributable to original roles."}
+  ]
+}
