@@ -1,0 +1,70 @@
+{
+  "task_id": "integration-full-language",
+  "executor": "paper_language",
+  "status": "completed",
+  "summary": "Synthetic native language preview; four unapproved changes and two deferred issues; no approval inferred.",
+  "output_artifacts": [
+    {
+      "path": "paper-editing-integration-fixture/full-run/language/language_report.md",
+      "sha256": "1b48110d85865a376dc007fcc69fe30d22012690eb591eccc4301c4c4b2e38d0",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-editing-integration-fixture/full-run/language/language_changes.json",
+      "sha256": "104c3e9c7f4fea7cce6c5a62ebd88d4d504c3870f0336c5a2046bdd5fd7c6fd2",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-editing-integration-fixture/full-run/language/manuscript_edited.md",
+      "sha256": "105dacb3560774efd882858d99af126bfb90599042e9ae553efb126b52251640",
+      "schema_version": "1.0"
+    }
+  ],
+  "evidence": [
+    {
+      "artifact": {
+        "path": "paper-language-v0.1-fixture/manuscript.md",
+        "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic input; glossary approval is simulated.",
+      "locator": "authorized handoff",
+      "schema_version": "1.0"
+    },
+    {
+      "artifact": {
+        "path": "paper-editing-integration-fixture/full-run/terminology/terminology_glossary.yaml",
+        "sha256": "e4e90df841c312e0ede2c1adf79f27c2f248af41b450bfcbb0582b1df2f9dcb0",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic input; glossary approval is simulated.",
+      "locator": "authorized handoff",
+      "schema_version": "1.0"
+    },
+    {
+      "artifact": {
+        "path": "paper-editing-integration-fixture/full-run/terminology/language_handoff.md",
+        "sha256": "87508ae05090742f7d9f4a455952e889f8a22c9d5bb9e0744c91c3b4a83aef2b",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic input; glossary approval is simulated.",
+      "locator": "authorized handoff",
+      "schema_version": "1.0"
+    }
+  ],
+  "errors": [],
+  "usage_metrics": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "token_measurement": "unknown",
+    "cost": null,
+    "currency": null,
+    "model_calls": null,
+    "input_bytes": null,
+    "output_bytes": null,
+    "schema_version": "1.0"
+  },
+  "quality_status": "passed",
+  "approval_status": "pending",
+  "schema_version": "1.0"
+}

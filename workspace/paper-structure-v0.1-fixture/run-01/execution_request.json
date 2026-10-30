@@ -1,0 +1,32 @@
+{
+  "task": {
+    "task_id": "paper-structure-v0.1-synthetic-01",
+    "objective": "Review macrostructure, argument chain and all prose paragraphs of the synthetic Markdown manuscript; propose edits only.",
+    "task_type": "paper_structure_review",
+    "required_capabilities": [
+      "paper_structure"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "paper_structure",
+    "input_artifacts": [
+      {
+        "path": "paper-structure-v0.1-fixture/manuscript.md",
+        "sha256": "d492389a525752fc3b5aa0dc3e42dac3f92d69be71c87c2a02d6d8c458480845",
+        "schema_version": "1.0"
+      }
+    ],
+    "output_artifacts": [
+      "paper-structure-v0.1-fixture/run-01/structure_report.md",
+      "paper-structure-v0.1-fixture/run-01/argument_map.md",
+      "paper-structure-v0.1-fixture/run-01/restructuring_plan.json"
+    ],
+    "status": "pending",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "executor": "paper_structure",
+  "model": null,
+  "attempt": 1,
+  "schema_version": "1.0"
+}

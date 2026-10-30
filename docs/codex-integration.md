@@ -18,3 +18,5 @@ Codex 原生委派是当前运行时提供的工具能力，不是 Python 可以
 尝试在本项目目录执行 `codex exec --ephemeral --sandbox read-only --json`，请求分别委派三个角色；当前受限环境在初始化进程内 app-server 时返回 `Operation not permitted (os error 1)`，未产生角色发现或调用事件。还需在有适当执行权限的 Codex 会话中重新启动或刷新项目后分别调用三种角色，并检查实际委派事件与结果；仅凭模型自述不算验证。该检查不需要修改全局配置。
 
 2026-10-28 后续验证：在允许启动 CLI 的环境里，两次 `codex exec --ephemeral --sandbox read-only --json` 已能运行（一次使用默认配置，一次只在该次进程中启用 `multi_agent_v2`）。两次均未产生 `literature_search` 的 spawn 事件；会话报告当前 spawn 接口无法选择自定义 Agent 类型。WebSocket TLS 握手失败后 CLI 回退 HTTPS 并完成请求，因此这次阻塞不应简单归因于 app-server 启动失败。实际角色发现及委派仍未通过验证；普通子代理和模型自述不能代替委派事件。测试事件位于 `workspace/runs/live-multi-agent-topology/codex-discovery*.jsonl`。未修改全局配置。
+
+2026-10-29 Paper Editing 初始化：`paper_structure`、`paper_terminology`、`paper_language` 三份 TOML 已创建并通过静态解析与必填字段检查，不指定模型。当前主会话的 `spawn_agent` 工具参数不包含自定义角色类型选择，也没有可观察的项目角色发现列表；因此三个角色在本会话的**发现未验证、指定角色选择不可用、实际调用未执行**。普通子代理任务名称不能证明加载了项目角色。当前结果不排除其他 Codex 客户端或未来会话支持该角色。配置文件和提示词不等于权限隔离、预算强制或科研质量保证。

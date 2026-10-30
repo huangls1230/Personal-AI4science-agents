@@ -1,0 +1,425 @@
+{
+  "schema_version": "0.1",
+  "fixture_notice": "Synthetic test record simulating prior author approval; no real person approved this entry.",
+  "manuscript": {
+    "path": "paper-terminology-v0.1-fixture/manuscript.md",
+    "sha256": "c339f56ab7f085348c3bc2c057083129d858a1b68b8a5a7ff753f2f48b36dc1c"
+  },
+  "prior_glossary": {
+    "path": "paper-terminology-v0.1-fixture/prior_glossary.yaml",
+    "sha256": "d887a5bb46d15984f87436e87ba039cda9a044da353d50b20e5e6c74de2a94b2"
+  },
+  "counting_policy": "区分大小写，统计全文各指定字面字符串的每次出现，包含复数或复合词内子串；不同条目和变体可重叠并分别计数，同一行出现多次重复列出位置。此计数不证明语义等同。",
+  "terms": [
+    {
+      "canonical_term": "Horizon Mapper",
+      "category": "model",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "Horizon Mapper"
+      ],
+      "allowed_variants": [
+        "Horizon Mapper"
+      ],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 15,
+        "section": "Introduction"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 15,
+          "section": "Introduction",
+          "term": "Horizon Mapper",
+          "context": "The proposed forecasting model is called the Horizon Mapper."
+        },
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "Horizon Mapper",
+          "context": "The Horizon Mapper uses the observations available before each forecast horizon."
+        }
+      ],
+      "rationale": "Synthetic test fixture only: simulate a previously approved model name; do not infer a scientific definition.",
+      "verification_status": "unverified",
+      "approval_status": "approved"
+    },
+    {
+      "canonical_term": "multi-agent system",
+      "category": "technical_term",
+      "definition": "文稿称其包含协调行动的多个 agent；该表述仅源自合成稿件。",
+      "abbreviation": "MAS",
+      "observed_variants": [
+        "multi-agent system",
+        "Multi-Agent System",
+        "Multi-Agent system",
+        "MAS"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "MAS"
+      ],
+      "first_occurrence": {
+        "line": 7,
+        "section": "Abstract"
+      },
+      "occurrences": 6,
+      "occurrence_locations": [
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "multi-agent system",
+          "context": "A multi-agent system (MAS) contains multiple agents that coordinate actions. The proposed work examines whether time series forecasts could inform coordination."
+        },
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "MAS",
+          "context": "A multi-agent system (MAS) contains multiple agents that coordinate actions. The proposed work examines whether time series forecasts could inform coordination."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "Multi-Agent System",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "MAS",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 13,
+          "section": "Introduction",
+          "term": "Multi-Agent system",
+          "context": "The Multi-Agent system uses a forecasting model to anticipate future observations. The MAS and the Agent Network are used as if they were interchangeable in the proposed coordination workflow."
+        },
+        {
+          "line": 13,
+          "section": "Introduction",
+          "term": "MAS",
+          "context": "The Multi-Agent system uses a forecasting model to anticipate future observations. The MAS and the Agent Network are used as if they were interchangeable in the proposed coordination workflow."
+        }
+      ],
+      "rationale": "同一系统称谓在摘要和正文呈现大小写差异；是否采用摘要形式待作者决定，不能与通信图直接互换。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "Agent Network",
+      "category": "technical_term",
+      "definition": "文稿中的定义是这些 agent 之间的通信图。",
+      "abbreviation": null,
+      "observed_variants": [
+        "Agent Network",
+        "agent network"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "Agent Network",
+        "agent network"
+      ],
+      "first_occurrence": {
+        "line": 11,
+        "section": "Introduction"
+      },
+      "occurrences": 3,
+      "occurrence_locations": [
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "Agent Network",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "agent network",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 13,
+          "section": "Introduction",
+          "term": "Agent Network",
+          "context": "The Multi-Agent system uses a forecasting model to anticipate future observations. The MAS and the Agent Network are used as if they were interchangeable in the proposed coordination workflow."
+        }
+      ],
+      "rationale": "文稿将其定义为 agent 间通信图；大小写存在差异，是否为专名未知。不得自动等同 MAS。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "GCF",
+      "category": "acronym",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "GCF"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 15,
+        "section": "Introduction"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 15,
+          "section": "Introduction",
+          "term": "GCF",
+          "context": "The proposed forecasting model is called the Horizon Mapper. It uses GCF to represent recent observations, but this draft does not specify what GCF means."
+        },
+        {
+          "line": 15,
+          "section": "Introduction",
+          "term": "GCF",
+          "context": "The proposed forecasting model is called the Horizon Mapper. It uses GCF to represent recent observations, but this draft does not specify what GCF means."
+        }
+      ],
+      "rationale": "文稿未给出扩展或定义；不得推测。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "forecast horizon",
+      "category": "domain_expression",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "forecast horizon"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 19,
+        "section": "Method"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "forecast horizon",
+          "context": "Let $\\lambda$ denote the forecast horizon, measured in time steps. The Horizon Mapper uses the observations available before each forecast horizon."
+        },
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "forecast horizon",
+          "context": "Let $\\lambda$ denote the forecast horizon, measured in time steps. The Horizon Mapper uses the observations available before each forecast horizon."
+        }
+      ],
+      "rationale": "forecast horizon 为文稿使用的表达；与同一符号的其他定义须分开。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "communication penalty weight",
+      "category": "technical_term",
+      "definition": "文稿称其为协调目标中的无量纲通信惩罚权重。",
+      "abbreviation": null,
+      "observed_variants": [
+        "communication penalty weight"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 21,
+        "section": "Method"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 21,
+          "section": "Method",
+          "term": "communication penalty weight",
+          "context": "Let $\\lambda$ denote the communication penalty weight in the coordination objective. This weight is dimensionless."
+        }
+      ],
+      "rationale": "文稿将此权重称为无量纲，并用与 forecast horizon 相同的符号表示。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "\\lambda",
+      "category": "symbol",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "\\lambda"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "\\lambda"
+      ],
+      "first_occurrence": {
+        "line": 19,
+        "section": "Method"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "\\lambda",
+          "context": "Let $\\lambda$ denote the forecast horizon, measured in time steps. The Horizon Mapper uses the observations available before each forecast horizon."
+        },
+        {
+          "line": 21,
+          "section": "Method",
+          "term": "\\lambda",
+          "context": "Let $\\lambda$ denote the communication penalty weight in the coordination objective. This weight is dimensionless."
+        }
+      ],
+      "rationale": "同一符号在第 19 行表示以时间步计的预测时域，在第 21 行表示无量纲通信惩罚权重；需作者决定并审阅公式及交叉引用。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "agent",
+      "category": "domain_expression",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "agent"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "agent"
+      ],
+      "first_occurrence": {
+        "line": 7,
+        "section": "Abstract"
+      },
+      "occurrences": 8,
+      "occurrence_locations": [
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "agent",
+          "context": "A multi-agent system (MAS) contains multiple agents that coordinate actions. The proposed work examines whether time series forecasts could inform coordination."
+        },
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "agent",
+          "context": "A multi-agent system (MAS) contains multiple agents that coordinate actions. The proposed work examines whether time series forecasts could inform coordination."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "agent",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "agent",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "agent",
+          "context": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+        },
+        {
+          "line": 23,
+          "section": "Method",
+          "term": "agent",
+          "context": "The word \"agent\" denotes an autonomous decision-making entity in the coordination system. In the phrase \"software agent package\", agent denotes a software component; the draft does not establish that every software component is an autonomous decision-making entity."
+        },
+        {
+          "line": 23,
+          "section": "Method",
+          "term": "agent",
+          "context": "The word \"agent\" denotes an autonomous decision-making entity in the coordination system. In the phrase \"software agent package\", agent denotes a software component; the draft does not establish that every software component is an autonomous decision-making entity."
+        },
+        {
+          "line": 23,
+          "section": "Method",
+          "term": "agent",
+          "context": "The word \"agent\" denotes an autonomous decision-making entity in the coordination system. In the phrase \"software agent package\", agent denotes a software component; the draft does not establish that every software component is an autonomous decision-making entity."
+        }
+      ],
+      "rationale": "字面字符串同时出现在复数及复合词内；第 23 行明确区分自主决策实体与软件组件，其他位置不自动归类。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "mean absolute error",
+      "category": "metric",
+      "definition": "稿件将其定义为绝对预测误差的算术平均值。",
+      "abbreviation": "MAE",
+      "observed_variants": [
+        "mean absolute error",
+        "MAE"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 27,
+        "section": "Planned Evaluation"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 27,
+          "section": "Planned Evaluation",
+          "term": "mean absolute error",
+          "context": "The forecast evaluation would report mean absolute error (MAE), defined here as the arithmetic mean of absolute forecast errors. A later table heading calls the same intended quantity Average Absolute Error (AAE). The draft contains no table or measurements."
+        },
+        {
+          "line": 27,
+          "section": "Planned Evaluation",
+          "term": "MAE",
+          "context": "The forecast evaluation would report mean absolute error (MAE), defined here as the arithmetic mean of absolute forecast errors. A later table heading calls the same intended quantity Average Absolute Error (AAE). The draft contains no table or measurements."
+        }
+      ],
+      "rationale": "文稿定义为绝对预测误差的算术平均值，并声称 AAE 指同一预期量；此关联只由稿件提供。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "Average Absolute Error",
+      "category": "metric",
+      "definition": null,
+      "abbreviation": "AAE",
+      "observed_variants": [
+        "Average Absolute Error",
+        "AAE"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "Average Absolute Error",
+        "AAE"
+      ],
+      "first_occurrence": {
+        "line": 27,
+        "section": "Planned Evaluation"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 27,
+          "section": "Planned Evaluation",
+          "term": "Average Absolute Error",
+          "context": "The forecast evaluation would report mean absolute error (MAE), defined here as the arithmetic mean of absolute forecast errors. A later table heading calls the same intended quantity Average Absolute Error (AAE). The draft contains no table or measurements."
+        },
+        {
+          "line": 27,
+          "section": "Planned Evaluation",
+          "term": "AAE",
+          "context": "The forecast evaluation would report mean absolute error (MAE), defined here as the arithmetic mean of absolute forecast errors. A later table heading calls the same intended quantity Average Absolute Error (AAE). The draft contains no table or measurements."
+        }
+      ],
+      "rationale": "稿件称其与 MAE 是同一预期量，但所称后续表格并不存在；待作者确认拟用名称及缩写。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    }
+  ]
+}

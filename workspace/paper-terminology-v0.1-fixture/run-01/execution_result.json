@@ -1,0 +1,65 @@
+{
+  "task_id": "paper-terminology-v0.1-synthetic-01",
+  "executor": "paper_terminology",
+  "status": "completed",
+  "summary": "Native role produced synthetic terminology proposals and handoff; parent checked sample coverage, source anchors and simulated prior glossary preservation. Scientific definitions and real author approvals remain unverified.",
+  "output_artifacts": [
+    {
+      "path": "paper-terminology-v0.1-fixture/run-01/terminology_report.md",
+      "sha256": "a9f10395ca372d0efe9409d5ec0379afa2d0d099f66ccdb821131920aa9cab33",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-terminology-v0.1-fixture/run-01/terminology_glossary.yaml",
+      "sha256": "2e54d4a6138b295058f9fc5d144fa9fa628b4efeca39bd621e51a957a2f102e9",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-terminology-v0.1-fixture/run-01/terminology_changes.json",
+      "sha256": "42a866b848a804b7100783c2786fd87a093a9a39269caee229b498f04f614693",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-terminology-v0.1-fixture/run-01/language_handoff.md",
+      "sha256": "a7e19a65be16a2fcdc5e421dc0d40430fe1f4461a4dadc8fcfb7d58fab18a12a",
+      "schema_version": "1.0"
+    }
+  ],
+  "evidence": [
+    {
+      "artifact": {
+        "path": "paper-terminology-v0.1-fixture/manuscript.md",
+        "sha256": "c339f56ab7f085348c3bc2c057083129d858a1b68b8a5a7ff753f2f48b36dc1c",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic manuscript; all claims are fictional.",
+      "locator": "lines 3-33",
+      "schema_version": "1.0"
+    },
+    {
+      "artifact": {
+        "path": "paper-terminology-v0.1-fixture/prior_glossary.yaml",
+        "sha256": "d887a5bb46d15984f87436e87ba039cda9a044da353d50b20e5e6c74de2a94b2",
+        "schema_version": "1.0"
+      },
+      "description": "Prior glossary fixture; approved is explicitly simulated and is not real author approval.",
+      "locator": "terms: Horizon Mapper",
+      "schema_version": "1.0"
+    }
+  ],
+  "errors": [],
+  "usage_metrics": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "token_measurement": "unknown",
+    "cost": null,
+    "currency": null,
+    "model_calls": null,
+    "input_bytes": null,
+    "output_bytes": null,
+    "schema_version": "1.0"
+  },
+  "quality_status": "passed",
+  "approval_status": "pending",
+  "schema_version": "1.0"
+}

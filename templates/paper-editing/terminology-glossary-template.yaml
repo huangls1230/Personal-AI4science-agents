@@ -1,0 +1,20 @@
+schema_version: '0.1'
+manuscript:
+  path: '<workspace-relative Markdown path>'
+  sha256: '<SHA-256>'
+terms:
+  - canonical_term: '<provisional or approved term>'
+    category: '<technical_term|acronym|model|algorithm|symbol|dataset|metric|domain_expression>'
+    definition: null
+    abbreviation: null
+    observed_variants: []
+    allowed_variants: []
+    ambiguous_variants: []
+    first_occurrence:
+      line: 1
+      section: '<heading>'
+    occurrences: 0
+    occurrence_locations: []
+    rationale: '<evidence and reason; mark uncertainties>'
+    verification_status: unverified
+    approval_status: proposed

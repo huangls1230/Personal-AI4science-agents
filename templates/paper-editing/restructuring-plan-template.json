@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "task_id": "<task ID>",
+  "execution_mode": "native_subagent or inline",
+  "manuscript": {"path": "<workspace-relative Markdown path>", "sha256": "<SHA-256>"},
+  "review_scope": "<authorized scope>",
+  "findings": [
+    {
+      "id": "S01",
+      "location": {"section": "<heading>", "start_line": 1, "end_line": 1, "quote": "<exact text from the cited lines>"},
+      "issue_type": "<specific structural issue>",
+      "action": "keep",
+      "recommendation": "<specific proposal, not an applied edit>",
+      "rationale": "<why this proposal helps>",
+      "priority": "medium",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    }
+  ]
+}

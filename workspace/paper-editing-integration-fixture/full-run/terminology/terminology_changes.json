@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "task_id": "integration-full-terminology",
+  "execution_mode": "native_subagent",
+  "manuscript": {
+    "path": "paper-language-v0.1-fixture/manuscript.md",
+    "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501"
+  },
+  "review_scope": "原始合成稿全文，包括表格和代码；结构报告仅为未应用的参考",
+  "changes": [
+    {
+      "issue_id": "T01",
+      "location": {
+        "section": "Introduction",
+        "start_line": 11,
+        "end_line": 11,
+        "quote": "The purpose of this draft is to investigate the possible use of forecasting in a multi-agent system."
+      },
+      "original_term": "multi-agent system",
+      "suggested_term": null,
+      "reason": "摘要第7行定义 MAS，引言首次出现全称未单独定义缩写。正文是否需独立定义取决于期刊规则；请作者按目标期刊确认，不建议自动修改。",
+      "priority": "low",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T02",
+      "location": {
+        "section": "Method",
+        "start_line": 17,
+        "end_line": 17,
+        "quote": "The forecast horizon is 4 time steps."
+      },
+      "original_term": "forecast horizon",
+      "suggested_term": null,
+      "reason": "第19行公式仅显示 t+1，第23行代码含 forecast_horizon；请作者确认四步范围与公式及代码的关系，不能推定一致或矛盾。",
+      "priority": "high",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T03",
+      "location": {
+        "section": "Method",
+        "start_line": 19,
+        "end_line": 19,
+        "quote": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+      },
+      "original_term": "\\hat{y}_{t+1}",
+      "suggested_term": null,
+      "reason": "请作者确认预测符号与函数 f 的含义，以及 f 的输入 x_t 与第17行复数 observations 的关系；不要自行改公式或定义。",
+      "priority": "high",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T04",
+      "location": {
+        "section": "Introduction",
+        "start_line": 13,
+        "end_line": 13,
+        "quote": "The controller sends a forecast to the monitor. It checks whether the input is available. This sentence does not specify which component performs the check."
+      },
+      "original_term": "input",
+      "suggested_term": null,
+      "reason": "input 指代及检查组件未明确；请作者确认 input 是否对应第17行 observations 或第19行 x_t，暂不互换术语。",
+      "priority": "medium",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    }
+  ]
+}

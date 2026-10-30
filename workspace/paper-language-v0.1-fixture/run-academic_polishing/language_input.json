@@ -1,0 +1,39 @@
+{
+  "project_id": "paper-language-synthetic-v01",
+  "manuscript_path": "paper-language-v0.1-fixture/manuscript.md",
+  "manuscript_sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+  "terminology_glossary_path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+  "terminology_glossary_sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0",
+  "editing_mode": "academic_polishing",
+  "language_variant": "preserve",
+  "editing_scope": "Only prose on source lines 7, 11, 13, 17, 28 and 36; preserve all other content exactly.",
+  "allowed_line_ranges": [
+    [
+      7,
+      7
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      13,
+      13
+    ],
+    [
+      17,
+      17
+    ],
+    [
+      28,
+      28
+    ],
+    [
+      36,
+      36
+    ]
+  ],
+  "output_directory": "paper-language-v0.1-fixture/run-academic_polishing",
+  "author_approval": "pending",
+  "glossary_approval_context": "synthetic mock, not real author approval"
+}

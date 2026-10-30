@@ -1,0 +1,43 @@
+{
+  "task": {
+    "task_id": "integration-full-terminology",
+    "objective": "Terminology review using original manuscript and structure review only as unapproved context.",
+    "task_type": "paper_terminology_review",
+    "required_capabilities": [
+      "paper_terminology"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "paper_terminology",
+    "input_artifacts": [
+      {
+        "path": "paper-language-v0.1-fixture/manuscript.md",
+        "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+        "schema_version": "1.0"
+      },
+      {
+        "path": "paper-editing-integration-fixture/full-run/structure/structure_report.md",
+        "sha256": "aeae3590b105d85d236a0e620c26dfcae6b8caf349f77a2933a38db708564648",
+        "schema_version": "1.0"
+      },
+      {
+        "path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+        "sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0",
+        "schema_version": "1.0"
+      }
+    ],
+    "output_artifacts": [
+      "paper-editing-integration-fixture/full-run/terminology/terminology_report.md",
+      "paper-editing-integration-fixture/full-run/terminology/terminology_glossary.yaml",
+      "paper-editing-integration-fixture/full-run/terminology/terminology_changes.json",
+      "paper-editing-integration-fixture/full-run/terminology/language_handoff.md"
+    ],
+    "status": "pending",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "executor": "paper_terminology",
+  "model": null,
+  "attempt": 1,
+  "schema_version": "1.0"
+}

@@ -1,0 +1,204 @@
+{
+  "schema_version": "0.1",
+  "task_id": "paper-structure-v0.1-synthetic-01",
+  "execution_mode": "native_subagent",
+  "manuscript": {
+    "path": "paper-structure-v0.1-fixture/manuscript.md",
+    "sha256": "d492389a525752fc3b5aa0dc3e42dac3f92d69be71c87c2a02d6d8c458480845"
+  },
+  "review_scope": "全文：第 1–39 行；覆盖全部 12 个正文段落（含文首声明）",
+  "findings": [
+    {
+      "id": "S01",
+      "location": {
+        "section": "文首声明",
+        "start_line": 3,
+        "end_line": 3,
+        "quote": "> Synthetic test fixture. This manuscript is invented for software testing; it reports no real study, experiment, dataset, results, or literature. Do not treat its claims as evidence."
+      },
+      "issue_type": "虚构材料的边界",
+      "action": "keep",
+      "recommendation": "保留文首声明，作为阅读全稿的边界。",
+      "rationale": "声明限定了稿件和所有所谓研究内容的性质。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S02",
+      "location": {
+        "section": "Abstract",
+        "start_line": 7,
+        "end_line": 7,
+        "quote": "This fictional manuscript proposes forecasting future task demand to help a team of agents decide when to coordinate. It describes a proposed forecasting method and a planned runtime measurement. No findings are reported."
+      },
+      "issue_type": "摘要与全文关联",
+      "action": "keep",
+      "recommendation": "保留摘要中计划性质和无发现的限定，并在作者解决全文论证后重新核对其对应关系。",
+      "rationale": "摘要提供目标、计划方法及测量，并明确没有结果；不能视为结果证据。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S03",
+      "location": {
+        "section": "Introduction",
+        "start_line": 11,
+        "end_line": 11,
+        "quote": "Multi-agent systems have many components. Time series forecasting predicts values over time. These topics are interesting and may be useful in many situations."
+      },
+      "issue_type": "背景与问题的连接不足",
+      "action": "add_argument",
+      "recommendation": "请作者说明这里的背景如何引出第 13 行的具体问题，并仅在有可核验材料时提供所需支持。",
+      "rationale": "一般背景没有解释需求预测与任务分配之间的动机。",
+      "priority": "medium",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S04",
+      "location": {
+        "section": "Introduction",
+        "start_line": 13,
+        "end_line": 13,
+        "quote": "We ask whether forecasts of future task demand can help agents coordinate task allocation. Our objective is to assess the effect of forecast-informed coordination on allocation decisions."
+      },
+      "issue_type": "研究问题与目标",
+      "action": "keep",
+      "recommendation": "保留研究问题和目标，作为检查方法、评估及结论是否对应的锚点。",
+      "rationale": "段落明确提出问题与目标，但后文的评估尚未对应目标。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S05",
+      "location": {
+        "section": "Introduction",
+        "start_line": 15,
+        "end_line": 15,
+        "quote": "The proposed approach is better suited to coordination than other approaches."
+      },
+      "issue_type": "比较主张缺少支撑及与目标的衔接",
+      "action": "add_argument",
+      "recommendation": "请作者说明比较对象、该主张在论证中的作用及可核验支持；无法支持时由作者决定如何处理。",
+      "rationale": "稿内未给出比较依据或相关结果，当前主张与仅计划评估的状态不连贯。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S06",
+      "location": {
+        "section": "Related Work",
+        "start_line": 19,
+        "end_line": 19,
+        "quote": "A fictional line of work studies how to choose colors for charts. Chart colors can make visual displays easier to distinguish. This paragraph is a placeholder and does not describe an actual publication."
+      },
+      "issue_type": "相关工作与研究问题的关联不明",
+      "action": "add_argument",
+      "recommendation": "请作者说明此占位段与第 13 行问题的关联，以及在虚构测试稿中应承担何种结构作用；如需变动由作者决定。",
+      "rationale": "当前段落讨论图表颜色，没有说明其与需求预测或任务分配的关系，也明确不是实际文献。",
+      "priority": "medium",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S07",
+      "location": {
+        "section": "Methodology",
+        "start_line": 23,
+        "end_line": 23,
+        "quote": "In the proposed setting, agents receive a forecast of future task demand. The coordination policy would use that forecast when allocating tasks. The manuscript does not specify the forecast model or allocation rule."
+      },
+      "issue_type": "方法与目标之间的操作化不足",
+      "action": "add_argument",
+      "recommendation": "请作者确认是否有可报告的预测模型及分配规则，并解释它们如何服务第 13 行目标；若尚未确定则保留未确定状态。",
+      "rationale": "方法提供概念性流程，但文本明确未指定模型和规则，难以判断如何评估目标。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S08",
+      "location": {
+        "section": "Methodology",
+        "start_line": 25,
+        "end_line": 25,
+        "quote": "The method is intended to support forecast-informed task allocation. Agents would use predictions when deciding how to allocate tasks."
+      },
+      "issue_type": "方法目的重复",
+      "action": "merge",
+      "recommendation": "建议与第 27 行完全重复段合并为一段，并保留原意。",
+      "rationale": "两段逐字相同，合并可减少重复而不增加主张。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S09",
+      "location": {
+        "section": "Methodology",
+        "start_line": 27,
+        "end_line": 27,
+        "quote": "The method is intended to support forecast-informed task allocation. Agents would use predictions when deciding how to allocate tasks."
+      },
+      "issue_type": "方法目的重复",
+      "action": "merge",
+      "recommendation": "建议与第 25 行完全重复段合并为一段，并保留原意。",
+      "rationale": "两段逐字相同，合并可减少重复而不增加主张。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S10",
+      "location": {
+        "section": "Experiments",
+        "start_line": 31,
+        "end_line": 31,
+        "quote": "The only planned evaluation measures the time required to load a configuration file on a single agent. No evaluation of allocation decisions or coordination is specified."
+      },
+      "issue_type": "评估与研究目标不匹配",
+      "action": "add_argument",
+      "recommendation": "请作者说明现有配置加载测量与研究目标的关系，并确认是否有实际计划的分配决策或协调评估可以报告；不要凭空补造。",
+      "rationale": "单代理配置加载时间不能直接回答第 13 行的分配决策问题，段落自身也指出未指定相关评估。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S11",
+      "location": {
+        "section": "Discussion",
+        "start_line": 35,
+        "end_line": 35,
+        "quote": "The configuration-loading measurement would describe one aspect of runtime. It would not establish whether forecast-informed coordination improves allocation decisions."
+      },
+      "issue_type": "讨论中的证据边界",
+      "action": "keep",
+      "recommendation": "保留该段对计划测量解释范围的限定，并与结论核对。",
+      "rationale": "段落正确陈述文本内计划测量不能建立相关改进结论。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S12",
+      "location": {
+        "section": "Conclusion",
+        "start_line": 39,
+        "end_line": 39,
+        "quote": "Forecast-informed coordination improves task allocation for all multi-agent systems. The planned configuration-loading measurement establishes this conclusion."
+      },
+      "issue_type": "结论超出文本所述证据",
+      "action": "add_argument",
+      "recommendation": "请作者依据实际可核验结果决定结论的范围及其与目标、计划测量的关系；目前不得把计划测量视为已建立普遍结论。",
+      "rationale": "摘要称没有发现，第 31、35 行仅有计划测量且明确不能建立分配改进；当前结论与之冲突。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    }
+  ]
+}

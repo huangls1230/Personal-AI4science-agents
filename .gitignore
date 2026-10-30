@@ -7,3 +7,4 @@ workspace/private/
 .test-tmp/
 workspace/cache/
 workspace/inputs/
+workspace/projects/

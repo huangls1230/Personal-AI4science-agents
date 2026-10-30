@@ -1,0 +1,38 @@
+{
+  "task": {
+    "task_id": "paper-terminology-v0.1-synthetic-01",
+    "objective": "Analyze and propose context-sensitive terminology, abbreviation and symbol consistency changes for the explicitly fictional test manuscript; do not apply edits.",
+    "task_type": "paper_terminology_review",
+    "required_capabilities": [
+      "paper_terminology"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "paper_terminology",
+    "input_artifacts": [
+      {
+        "path": "paper-terminology-v0.1-fixture/manuscript.md",
+        "sha256": "c339f56ab7f085348c3bc2c057083129d858a1b68b8a5a7ff753f2f48b36dc1c",
+        "schema_version": "1.0"
+      },
+      {
+        "path": "paper-terminology-v0.1-fixture/prior_glossary.yaml",
+        "sha256": "d887a5bb46d15984f87436e87ba039cda9a044da353d50b20e5e6c74de2a94b2",
+        "schema_version": "1.0"
+      }
+    ],
+    "output_artifacts": [
+      "paper-terminology-v0.1-fixture/run-01/terminology_report.md",
+      "paper-terminology-v0.1-fixture/run-01/terminology_glossary.yaml",
+      "paper-terminology-v0.1-fixture/run-01/terminology_changes.json",
+      "paper-terminology-v0.1-fixture/run-01/language_handoff.md"
+    ],
+    "status": "pending",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "executor": "paper_terminology",
+  "model": null,
+  "attempt": 1,
+  "schema_version": "1.0"
+}

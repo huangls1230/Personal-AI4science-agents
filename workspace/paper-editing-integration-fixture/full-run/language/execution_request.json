@@ -1,0 +1,42 @@
+{
+  "task": {
+    "task_id": "integration-full-language",
+    "objective": "Conservative language preview preserving original source and mock-approved glossary entries; no structure or terminology proposal is applied.",
+    "task_type": "paper_language_review",
+    "required_capabilities": [
+      "paper_language"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "paper_language",
+    "input_artifacts": [
+      {
+        "path": "paper-language-v0.1-fixture/manuscript.md",
+        "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+        "schema_version": "1.0"
+      },
+      {
+        "path": "paper-editing-integration-fixture/full-run/terminology/terminology_glossary.yaml",
+        "sha256": "e4e90df841c312e0ede2c1adf79f27c2f248af41b450bfcbb0582b1df2f9dcb0",
+        "schema_version": "1.0"
+      },
+      {
+        "path": "paper-editing-integration-fixture/full-run/terminology/language_handoff.md",
+        "sha256": "87508ae05090742f7d9f4a455952e889f8a22c9d5bb9e0744c91c3b4a83aef2b",
+        "schema_version": "1.0"
+      }
+    ],
+    "output_artifacts": [
+      "paper-editing-integration-fixture/full-run/language/language_report.md",
+      "paper-editing-integration-fixture/full-run/language/language_changes.json",
+      "paper-editing-integration-fixture/full-run/language/manuscript_edited.md"
+    ],
+    "status": "pending",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "executor": "paper_language",
+  "model": null,
+  "attempt": 1,
+  "schema_version": "1.0"
+}

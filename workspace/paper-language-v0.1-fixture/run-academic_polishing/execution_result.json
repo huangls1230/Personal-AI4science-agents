@@ -1,0 +1,60 @@
+{
+  "task_id": "paper-language-v0.1-academic_polishing",
+  "executor": "paper_language",
+  "status": "completed",
+  "summary": "Native role produced an unapproved language candidate; parent checked synthetic fixture and deterministic guards. Scientific meaning and author approval require human review.",
+  "output_artifacts": [
+    {
+      "path": "paper-language-v0.1-fixture/run-academic_polishing/language_report.md",
+      "sha256": "9aaa30def74b46a7d80ddfa58893a9bc6ee483d461ce7e327b4d923aefc67557",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-language-v0.1-fixture/run-academic_polishing/language_changes.json",
+      "sha256": "a6470c2b00072601d877ef4b7064a8220c72b7c2fc3c7bd8219ab83e9de3832d",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-language-v0.1-fixture/run-academic_polishing/manuscript_edited.md",
+      "sha256": "cd13e245a12762ac38cd9c17511b915d54746dbf3ddd60b50108fb4e041eb08d",
+      "schema_version": "1.0"
+    }
+  ],
+  "evidence": [
+    {
+      "artifact": {
+        "path": "paper-language-v0.1-fixture/manuscript.md",
+        "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic manuscript; numbers and citations are fictional.",
+      "locator": "lines 7, 11, 13, 17, 28 and 36",
+      "schema_version": "1.0"
+    },
+    {
+      "artifact": {
+        "path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+        "sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0",
+        "schema_version": "1.0"
+      },
+      "description": "Mock glossary; approval entries simulate approvals and are not real author approvals.",
+      "locator": "terms",
+      "schema_version": "1.0"
+    }
+  ],
+  "errors": [],
+  "usage_metrics": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "token_measurement": "unknown",
+    "cost": null,
+    "currency": null,
+    "model_calls": null,
+    "input_bytes": null,
+    "output_bytes": null,
+    "schema_version": "1.0"
+  },
+  "quality_status": "passed",
+  "approval_status": "pending",
+  "schema_version": "1.0"
+}

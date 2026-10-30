@@ -1,0 +1,349 @@
+{
+  "schema_version": "0.1",
+  "fixture_notice": "Synthetic mock approval only; no real person approved these entries.",
+  "manuscript": {
+    "path": "paper-language-v0.1-fixture/manuscript.md",
+    "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501"
+  },
+  "terms": [
+    {
+      "canonical_term": "multi-agent system",
+      "category": "technical_term",
+      "definition": null,
+      "abbreviation": "MAS",
+      "observed_variants": [
+        "multi-agent system",
+        "MAS"
+      ],
+      "allowed_variants": [
+        "multi-agent system",
+        "MAS"
+      ],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 7,
+        "section": "Abstract"
+      },
+      "occurrences": 3,
+      "occurrence_locations": [
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "multi-agent system",
+          "context": "A multi-agent system (MAS) use time series forecasts to coordinate agents. The synthetic examples suggest that forecasts may help coordination in the stated simulation; they do not establish a general effect."
+        },
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "MAS",
+          "context": "A multi-agent system (MAS) use time series forecasts to coordinate agents. The synthetic examples suggest that forecasts may help coordination in the stated simulation; they do not establish a general effect."
+        },
+        {
+          "line": 11,
+          "section": "Introduction",
+          "term": "multi-agent system",
+          "context": "The purpose of this draft is to investigate the possible use of forecasting in a multi-agent system. In order to be able to make decisions at a later time, agents use forecasts that are produced before that time, and these forecasts are produced in advance of the decisions that will be made later."
+        }
+      ],
+      "rationale": "Synthetic technical expression and approved abbreviation. Mock approval only; no real author approved this.",
+      "verification_status": "unverified",
+      "approval_status": "approved"
+    },
+    {
+      "canonical_term": "Horizon Mapper",
+      "category": "model",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "Horizon Mapper"
+      ],
+      "allowed_variants": [
+        "Horizon Mapper"
+      ],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 17,
+        "section": "Method"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 17,
+          "section": "Method",
+          "term": "Horizon Mapper",
+          "context": "The Horizon Mapper produce a forecast from the available observations. The forecast horizon is 4 time steps. The authors analyze the output with mean absolute error (MAE), and MAE measures the average absolute difference between forecasts and observations in this synthetic example."
+        },
+        {
+          "line": 28,
+          "section": "Results",
+          "term": "Horizon Mapper",
+          "context": "In a made-up illustration, Horizon Mapper has an MAE of 0.25 units. These fictional values indicate a difference in this example, but they do not establish a causal effect. The findings may suggest a possible association in the simulated setting [@synthetic2026]."
+        }
+      ],
+      "rationale": "Synthetic author-created model name; preserve exactly. Mock approval only; no real author approved this.",
+      "verification_status": "unverified",
+      "approval_status": "approved"
+    },
+    {
+      "canonical_term": "mean absolute error",
+      "category": "metric",
+      "definition": null,
+      "abbreviation": "MAE",
+      "observed_variants": [
+        "mean absolute error",
+        "MAE"
+      ],
+      "allowed_variants": [
+        "mean absolute error",
+        "MAE"
+      ],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 17,
+        "section": "Method"
+      },
+      "occurrences": 5,
+      "occurrence_locations": [
+        {
+          "line": 17,
+          "section": "Method",
+          "term": "mean absolute error",
+          "context": "The Horizon Mapper produce a forecast from the available observations. The forecast horizon is 4 time steps. The authors analyze the output with mean absolute error (MAE), and MAE measures the average absolute difference between forecasts and observations in this synthetic example."
+        },
+        {
+          "line": 17,
+          "section": "Method",
+          "term": "MAE",
+          "context": "The Horizon Mapper produce a forecast from the available observations. The forecast horizon is 4 time steps. The authors analyze the output with mean absolute error (MAE), and MAE measures the average absolute difference between forecasts and observations in this synthetic example."
+        },
+        {
+          "line": 17,
+          "section": "Method",
+          "term": "MAE",
+          "context": "The Horizon Mapper produce a forecast from the available observations. The forecast horizon is 4 time steps. The authors analyze the output with mean absolute error (MAE), and MAE measures the average absolute difference between forecasts and observations in this synthetic example."
+        },
+        {
+          "line": 28,
+          "section": "Results",
+          "term": "MAE",
+          "context": "In a made-up illustration, Horizon Mapper has an MAE of 0.25 units. These fictional values indicate a difference in this example, but they do not establish a causal effect. The findings may suggest a possible association in the simulated setting [@synthetic2026]."
+        },
+        {
+          "line": 32,
+          "section": "Results",
+          "term": "MAE",
+          "context": "| MAE | 0.25 units |"
+        }
+      ],
+      "rationale": "Synthetic approved metric name and abbreviation. Mock approval only; no real author approved this.",
+      "verification_status": "unverified",
+      "approval_status": "approved"
+    },
+    {
+      "canonical_term": "x_t",
+      "category": "symbol",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "x_t"
+      ],
+      "allowed_variants": [
+        "x_t"
+      ],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 19,
+        "section": "Method"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "x_t",
+          "context": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+        },
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "x_t",
+          "context": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+        }
+      ],
+      "rationale": "Symbol for observation at time t as stated in the fixture; preserve formula and definition. Mock approval only; no real author approved this.",
+      "verification_status": "unverified",
+      "approval_status": "approved"
+    },
+    {
+      "canonical_term": "time series",
+      "category": "domain_expression",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "time series"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 7,
+        "section": "Abstract"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 7,
+          "section": "Abstract",
+          "term": "time series",
+          "context": "A multi-agent system (MAS) use time series forecasts to coordinate agents. The synthetic examples suggest that forecasts may help coordination in the stated simulation; they do not establish a general effect."
+        }
+      ],
+      "rationale": "预测对象的时间序列描述；未给出更多定义。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "forecast horizon",
+      "category": "technical_term",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "forecast horizon",
+        "forecast_horizon"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [
+        "forecast_horizon"
+      ],
+      "first_occurrence": {
+        "line": 17,
+        "section": "Method"
+      },
+      "occurrences": 2,
+      "occurrence_locations": [
+        {
+          "line": 17,
+          "section": "Method",
+          "term": "forecast horizon",
+          "context": "The Horizon Mapper produce a forecast from the available observations. The forecast horizon is 4 time steps. The authors analyze the output with mean absolute error (MAE), and MAE measures the average absolute difference between forecasts and observations in this synthetic example."
+        },
+        {
+          "line": 23,
+          "section": "Method",
+          "term": "forecast_horizon",
+          "context": "forecast_horizon = 4"
+        }
+      ],
+      "rationale": "正文的预测范围和代码标识可能相关，但其等价关系须作者确认。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "controller",
+      "category": "technical_term",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "controller"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 13,
+        "section": "Introduction"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 13,
+          "section": "Introduction",
+          "term": "controller",
+          "context": "The controller sends a forecast to the monitor. It checks whether the input is available. This sentence does not specify which component performs the check."
+        }
+      ],
+      "rationale": "组件名称；其职责仅在第13行描述。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "monitor",
+      "category": "technical_term",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "monitor"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 13,
+        "section": "Introduction"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 13,
+          "section": "Introduction",
+          "term": "monitor",
+          "context": "The controller sends a forecast to the monitor. It checks whether the input is available. This sentence does not specify which component performs the check."
+        }
+      ],
+      "rationale": "组件名称；不能假定其负责检查。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "\\hat{y}_{t+1}",
+      "category": "symbol",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "\\hat{y}_{t+1}"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 19,
+        "section": "Method"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "\\hat{y}_{t+1}",
+          "context": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+        }
+      ],
+      "rationale": "公式中的预测符号；单独语义及与四步范围的关系未明确。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    },
+    {
+      "canonical_term": "f(x_t)",
+      "category": "symbol",
+      "definition": null,
+      "abbreviation": null,
+      "observed_variants": [
+        "f(x_t)"
+      ],
+      "allowed_variants": [],
+      "ambiguous_variants": [],
+      "first_occurrence": {
+        "line": 19,
+        "section": "Method"
+      },
+      "occurrences": 1,
+      "occurrence_locations": [
+        {
+          "line": 19,
+          "section": "Method",
+          "term": "f(x_t)",
+          "context": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+        }
+      ],
+      "rationale": "公式中的函数表达式；f 的具体定义未给出。 全部新条目仅为候选，未经批准。",
+      "verification_status": "unverified",
+      "approval_status": "proposed"
+    }
+  ]
+}

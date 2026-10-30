@@ -1,0 +1,42 @@
+{
+  "project_id": "integration-synthetic-v01",
+  "manuscript_path": "paper-language-v0.1-fixture/manuscript.md",
+  "manuscript_sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+  "glossary_path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+  "glossary_sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0",
+  "glossary_approval": "synthetic mock only; no real author approval",
+  "document_format": "markdown",
+  "target_language": "en",
+  "editing_mode": "conservative",
+  "editing_scope": "All prose; no proposed structure edits applied. Language edits restricted to lines 7, 11, 13, 17, 28, 36.",
+  "language_ranges": [
+    [
+      7,
+      7
+    ],
+    [
+      11,
+      11
+    ],
+    [
+      13,
+      13
+    ],
+    [
+      17,
+      17
+    ],
+    [
+      28,
+      28
+    ],
+    [
+      36,
+      36
+    ]
+  ],
+  "output_directory": "paper-editing-integration-fixture/full-run",
+  "execution_mode": "native_subagent",
+  "max_retries": 0,
+  "final_status": "awaiting_author_approval"
+}

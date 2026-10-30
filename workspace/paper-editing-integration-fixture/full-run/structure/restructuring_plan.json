@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.1",
+  "task_id": "integration-full-structure",
+  "execution_mode": "native_subagent",
+  "manuscript": {
+    "path": "paper-language-v0.1-fixture/manuscript.md",
+    "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501"
+  },
+  "review_scope": "授权合成 Markdown 全文；使用源文件 1 起始行号。",
+  "findings": [
+    {
+      "id": "S01",
+      "location": {
+        "section": "Abstract",
+        "start_line": 7,
+        "end_line": 7,
+        "quote": "The synthetic examples suggest that forecasts may help coordination in the stated simulation; they do not establish a general effect."
+      },
+      "issue_type": "摘要与正文证据连接不清",
+      "action": "add_argument",
+      "recommendation": "请作者核实摘要中的协作表述是否能由正文所述示例支持；如有实际依据，明确对应位置及范围。",
+      "rationale": "正文报告预测误差，但未明确说明该指标如何支持协作表述。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S02",
+      "location": {
+        "section": "Introduction",
+        "start_line": 11,
+        "end_line": 11,
+        "quote": "The purpose of this draft is to investigate the possible use of forecasting in a multi-agent system."
+      },
+      "issue_type": "研究动机及稿内未解决问题不清",
+      "action": "add_argument",
+      "recommendation": "请作者说明具体拟解决的问题，以及本稿所依据的已知与未确定内容；如无依据则保留为待核实问题。",
+      "rationale": "目标已提出，但引言未解释具体问题如何导向目标；不能由此推断整个领域存在空白。",
+      "priority": "medium",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S03",
+      "location": {
+        "section": "Introduction",
+        "start_line": 13,
+        "end_line": 13,
+        "quote": "It checks whether the input is available."
+      },
+      "issue_type": "组件责任及目标连接不清",
+      "action": "add_argument",
+      "recommendation": "请作者确认执行检查的组件，并说明该步骤与研究目标或后续方法的关系，再决定其在引言或方法中的位置。",
+      "rationale": "本段自身指出执行者不明确，且与后续方法的连接未展开。",
+      "priority": "medium",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S04",
+      "location": {
+        "section": "Method",
+        "start_line": 17,
+        "end_line": 17,
+        "quote": "The authors analyze the output with mean absolute error (MAE),"
+      },
+      "issue_type": "方法与协作目标之间缺少连接",
+      "action": "add_argument",
+      "recommendation": "请作者说明预测如何用于协作，以及已报告的评估如何对应目标；只补充实际存在并可核实的步骤。",
+      "rationale": "此处介绍预测和误差评估，尚未描述与协作目标的操作性连接。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S05",
+      "location": {
+        "section": "Method",
+        "start_line": 19,
+        "end_line": 19,
+        "quote": "The forecast is written as $\\hat{y}_{t+1} = f(x_t)$, where $x_t$ is the observation at time $t$."
+      },
+      "issue_type": "公式与预测范围的关系未解释",
+      "action": "add_argument",
+      "recommendation": "请作者解释该单步表示与前述预测范围之间的关系，确认实际含义后再考虑补充说明。",
+      "rationale": "公式位置紧随预测范围，但两者的关系在稿内未说明；不推断其矛盾或修改公式。",
+      "priority": "medium",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S06",
+      "location": {
+        "section": "Results",
+        "start_line": 28,
+        "end_line": 28,
+        "quote": "These fictional values indicate a difference in this example, but they do not establish a causal effect."
+      },
+      "issue_type": "结果解释的比较依据不明",
+      "action": "add_argument",
+      "recommendation": "请作者说明所指差异的比较对象以及随后所述关联的依据，或确认这些表述应如何限定。",
+      "rationale": "当前段落给出一个虚构误差值，但未明确差异的参照或关联所涉及的变量。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    },
+    {
+      "id": "S07",
+      "location": {
+        "section": "Discussion",
+        "start_line": 36,
+        "end_line": 36,
+        "quote": "The synthetic result is limited to the described example. The synthetic result is limited to the described example."
+      },
+      "issue_type": "限制句完全重复",
+      "action": "merge",
+      "recommendation": "建议合并连续的重复限制句，保留该限制及后续提醒。",
+      "rationale": "相邻两句完全相同，保留一次即可维持原有限制。",
+      "priority": "low",
+      "may_change_scientific_meaning": false,
+      "author_approval_required": false
+    },
+    {
+      "id": "S08",
+      "location": {
+        "section": "Discussion",
+        "start_line": 36,
+        "end_line": 36,
+        "quote": "The synthetic result is limited to the described example."
+      },
+      "issue_type": "目标与结论连接不清",
+      "action": "add_argument",
+      "recommendation": "请作者核实讨论能否根据已呈现的示例回应引言目标，并在证据允许的范围内说明；若无法支持则明确未解决。",
+      "rationale": "讨论给出适用范围限制，但尚未明确从所报告误差到协作目标的推理。",
+      "priority": "high",
+      "may_change_scientific_meaning": true,
+      "author_approval_required": true
+    }
+  ]
+}

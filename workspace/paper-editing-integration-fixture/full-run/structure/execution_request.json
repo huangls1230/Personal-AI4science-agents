@@ -1,0 +1,32 @@
+{
+  "task": {
+    "task_id": "integration-full-structure",
+    "objective": "Structure review of authorized synthetic Markdown.",
+    "task_type": "paper_structure_review",
+    "required_capabilities": [
+      "paper_structure"
+    ],
+    "complexity": "complex",
+    "sensitivity": "public",
+    "executor": "paper_structure",
+    "input_artifacts": [
+      {
+        "path": "paper-language-v0.1-fixture/manuscript.md",
+        "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501",
+        "schema_version": "1.0"
+      }
+    ],
+    "output_artifacts": [
+      "paper-editing-integration-fixture/full-run/structure/structure_report.md",
+      "paper-editing-integration-fixture/full-run/structure/argument_map.md",
+      "paper-editing-integration-fixture/full-run/structure/restructuring_plan.json"
+    ],
+    "status": "pending",
+    "idempotency_key": null,
+    "schema_version": "1.0"
+  },
+  "executor": "paper_structure",
+  "model": null,
+  "attempt": 1,
+  "schema_version": "1.0"
+}

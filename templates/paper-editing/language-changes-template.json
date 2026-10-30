@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "task_id": "<task ID>",
+  "execution_mode": "native_subagent or inline",
+  "project_id": "<project ID>",
+  "editing_mode": "conservative",
+  "language_variant": "preserve",
+  "editing_scope": "<authorized scope>",
+  "manuscript": {"path": "<workspace-relative Markdown>", "sha256": "<SHA-256>"},
+  "terminology_glossary": {"path": "<workspace-relative glossary>", "sha256": "<SHA-256>"},
+  "changes": [
+    {
+      "change_id": "L01",
+      "source_location": {"start_line": 1, "end_line": 1, "original_sha256": "<SHA-256 of exact original_text UTF-8>"},
+      "original_text": "<exact nonempty source substring>",
+      "revised_text": "<candidate or unchanged text>",
+      "issue_type": "<issue type>",
+      "reason": "<reason and any unresolved ambiguity>",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    }
+  ]
+}

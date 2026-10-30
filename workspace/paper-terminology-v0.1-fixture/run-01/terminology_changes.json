@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.1",
+  "task_id": "paper-terminology-v0.1-synthetic-01",
+  "execution_mode": "native_subagent",
+  "manuscript": {
+    "path": "paper-terminology-v0.1-fixture/manuscript.md",
+    "sha256": "c339f56ab7f085348c3bc2c057083129d858a1b68b8a5a7ff753f2f48b36dc1c"
+  },
+  "review_scope": "授权合成 Markdown 全文；仅术语、缩写和符号，分析并提案",
+  "changes": [
+    {
+      "issue_id": "T01",
+      "location": {
+        "section": "Introduction",
+        "start_line": 11,
+        "end_line": 11,
+        "quote": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+      },
+      "original_term": "Multi-Agent System",
+      "suggested_term": "multi-agent system",
+      "reason": "与摘要第 7 行大小写不同；建议仅在作者确认不是专名后统一，摘要及正文各自定义是否保留取决于目标期刊。",
+      "priority": "medium",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T02",
+      "location": {
+        "section": "Introduction",
+        "start_line": 13,
+        "end_line": 13,
+        "quote": "The Multi-Agent system uses a forecasting model to anticipate future observations. The MAS and the Agent Network are used as if they were interchangeable in the proposed coordination workflow."
+      },
+      "original_term": "Multi-Agent system",
+      "suggested_term": "multi-agent system",
+      "reason": "与第 7、11 行大小写形式不同；提议以摘要形式统一，专名地位待确认。",
+      "priority": "medium",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T03",
+      "location": {
+        "section": "Introduction",
+        "start_line": 11,
+        "end_line": 11,
+        "quote": "A Multi-Agent System (MAS) contains multiple agents that coordinate actions. In this draft, an Agent Network is the communication graph among those agents, and the agent network may change over time."
+      },
+      "original_term": "agent network",
+      "suggested_term": "Agent Network",
+      "reason": "第 11 行同句存在大小写差异；是否专名未知，建议仅在作者确认后统一。",
+      "priority": "low",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T04",
+      "location": {
+        "section": "Introduction",
+        "start_line": 13,
+        "end_line": 13,
+        "quote": "The Multi-Agent system uses a forecasting model to anticipate future observations. The MAS and the Agent Network are used as if they were interchangeable in the proposed coordination workflow."
+      },
+      "original_term": "MAS and the Agent Network",
+      "suggested_term": null,
+      "reason": "第 11 行称 Agent Network 是 agent 间通信图，第 7、11 行称 MAS 包含协调行动的多个 agent；第 13 行称二者可互换。问作者该工作流是否确实将系统和图等同；可能影响科学含义。",
+      "priority": "high",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T05",
+      "location": {
+        "section": "Introduction",
+        "start_line": 15,
+        "end_line": 15,
+        "quote": "The proposed forecasting model is called the Horizon Mapper. It uses GCF to represent recent observations, but this draft does not specify what GCF means."
+      },
+      "original_term": "GCF",
+      "suggested_term": null,
+      "reason": "未提供扩展或定义；请作者提供含义和首次使用所需的定义，不得推测。",
+      "priority": "high",
+      "semantic_risk": "medium",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T06",
+      "location": {
+        "section": "Method",
+        "start_line": 21,
+        "end_line": 21,
+        "quote": "Let $\\lambda$ denote the communication penalty weight in the coordination objective. This weight is dimensionless."
+      },
+      "original_term": "\\lambda",
+      "suggested_term": null,
+      "reason": "第 19 行同一符号表示以时间步计的 forecast horizon，此处表示无量纲权重；请作者选择区分符号并审阅所有公式和引用。",
+      "priority": "high",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T07",
+      "location": {
+        "section": "Method",
+        "start_line": 23,
+        "end_line": 23,
+        "quote": "The word \"agent\" denotes an autonomous decision-making entity in the coordination system. In the phrase \"software agent package\", agent denotes a software component; the draft does not establish that every software component is an autonomous decision-making entity."
+      },
+      "original_term": "agent",
+      "suggested_term": null,
+      "reason": "本行区分自主决策实体和软件组件，且未断言所有组件都是自主实体；请作者确认上下文中意义，避免全局替换。",
+      "priority": "medium",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    },
+    {
+      "issue_id": "T08",
+      "location": {
+        "section": "Planned Evaluation",
+        "start_line": 27,
+        "end_line": 27,
+        "quote": "The forecast evaluation would report mean absolute error (MAE), defined here as the arithmetic mean of absolute forecast errors. A later table heading calls the same intended quantity Average Absolute Error (AAE). The draft contains no table or measurements."
+      },
+      "original_term": "Average Absolute Error (AAE)",
+      "suggested_term": null,
+      "reason": "稿件称 AAE 与 MAE 是相同预期量，但无实际表格；请作者确认是否统一名称和缩写及将来表头。",
+      "priority": "medium",
+      "semantic_risk": "medium",
+      "approval_required": true,
+      "status": "proposed"
+    }
+  ]
+}

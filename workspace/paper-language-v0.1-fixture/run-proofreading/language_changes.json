@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "task_id": "paper-language-v0.1-proofreading",
+  "execution_mode": "native_subagent",
+  "project_id": "paper-language-synthetic-v01",
+  "editing_mode": "proofreading",
+  "language_variant": "preserve",
+  "editing_scope": "Only prose on source lines 7, 11, 13, 17, 28 and 36; preserve all other content exactly.",
+  "manuscript": {
+    "path": "paper-language-v0.1-fixture/manuscript.md",
+    "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501"
+  },
+  "terminology_glossary": {
+    "path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+    "sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0"
+  },
+  "changes": [
+    {
+      "change_id": "L01",
+      "source_location": {
+        "start_line": 7,
+        "end_line": 7,
+        "original_sha256": "1c23bf273003e4ef96df38b1193008b00fa7530c0397b038c67ae510c815e1bb"
+      },
+      "original_text": "A multi-agent system (MAS) use time series forecasts to coordinate agents.",
+      "revised_text": "A multi-agent system (MAS) uses time series forecasts to coordinate agents.",
+      "issue_type": "subject-verb agreement",
+      "reason": "The singular subject requires a singular verb.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    },
+    {
+      "change_id": "L02",
+      "source_location": {
+        "start_line": 13,
+        "end_line": 13,
+        "original_sha256": "4ad83474493b2009088efbc1168398861772a80d5981347dca89666f8e70f548"
+      },
+      "original_text": "It checks whether the input is available.",
+      "revised_text": "It checks whether the input is available.",
+      "issue_type": "ambiguous reference",
+      "reason": "It could refer to the controller or the monitor; only the author can identify the intended component.",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "deferred",
+      "applied_to_draft": false
+    },
+    {
+      "change_id": "L03",
+      "source_location": {
+        "start_line": 17,
+        "end_line": 17,
+        "original_sha256": "46d1bcd4a805ffddab055ef3f9cef4ad17d266cd99d33a33d2a2ed35f6f86a35"
+      },
+      "original_text": "The Horizon Mapper produce a forecast from the available observations.",
+      "revised_text": "The Horizon Mapper produces a forecast from the available observations.",
+      "issue_type": "subject-verb agreement",
+      "reason": "The singular model name requires a singular verb.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    }
+  ]
+}

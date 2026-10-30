@@ -1,0 +1,50 @@
+{
+  "task_id": "paper-structure-v0.1-synthetic-01",
+  "executor": "paper_structure",
+  "status": "completed",
+  "summary": "Native role produced structure review, argument map and proposals; main orchestrator checked fixture coverage and source anchors. Recommendations remain unapproved and scientific facts are not verified.",
+  "output_artifacts": [
+    {
+      "path": "paper-structure-v0.1-fixture/run-01/structure_report.md",
+      "sha256": "a7be1aee9ce1459fa89044ee8c468e69fdb5e2ccc1e76907c6053f7817e5fd76",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-structure-v0.1-fixture/run-01/argument_map.md",
+      "sha256": "5b87e1f11abac5040021bd11cce1d54de03923df55343943013b467b4e20f7ca",
+      "schema_version": "1.0"
+    },
+    {
+      "path": "paper-structure-v0.1-fixture/run-01/restructuring_plan.json",
+      "sha256": "b159d318c08054fc9c751fcef5d019195c3d3bc863b5064e91f62088d22721b7",
+      "schema_version": "1.0"
+    }
+  ],
+  "evidence": [
+    {
+      "artifact": {
+        "path": "paper-structure-v0.1-fixture/manuscript.md",
+        "sha256": "d492389a525752fc3b5aa0dc3e42dac3f92d69be71c87c2a02d6d8c458480845",
+        "schema_version": "1.0"
+      },
+      "description": "Synthetic Markdown manuscript reviewed by the native paper_structure agent; source claims are fictional.",
+      "locator": "lines 3-39",
+      "schema_version": "1.0"
+    }
+  ],
+  "errors": [],
+  "usage_metrics": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "token_measurement": "unknown",
+    "cost": null,
+    "currency": null,
+    "model_calls": null,
+    "input_bytes": null,
+    "output_bytes": null,
+    "schema_version": "1.0"
+  },
+  "quality_status": "passed",
+  "approval_status": "pending",
+  "schema_version": "1.0"
+}

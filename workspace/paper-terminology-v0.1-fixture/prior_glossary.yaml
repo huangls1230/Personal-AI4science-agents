@@ -1,0 +1,23 @@
+schema_version: '0.1'
+fixture_notice: 'Synthetic test record simulating prior author approval; no real person approved this entry.'
+manuscript:
+  path: paper-terminology-v0.1-fixture/manuscript.md
+  sha256: c339f56ab7f085348c3bc2c057083129d858a1b68b8a5a7ff753f2f48b36dc1c
+terms:
+  - canonical_term: Horizon Mapper
+    category: model
+    definition: null
+    abbreviation: null
+    observed_variants: [Horizon Mapper]
+    allowed_variants: [Horizon Mapper]
+    ambiguous_variants: []
+    first_occurrence:
+      line: 15
+      section: Introduction
+    occurrences: 2
+    occurrence_locations:
+      - {line: 15, section: Introduction, term: Horizon Mapper, context: 'The proposed forecasting model is called the Horizon Mapper.'}
+      - {line: 19, section: Method, term: Horizon Mapper, context: 'The Horizon Mapper uses the observations available before each forecast horizon.'}
+    rationale: 'Synthetic test fixture only: simulate a previously approved model name; do not infer a scientific definition.'
+    verification_status: unverified
+    approval_status: approved

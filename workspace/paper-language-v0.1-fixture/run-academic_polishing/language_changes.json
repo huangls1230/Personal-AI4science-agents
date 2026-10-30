@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1",
+  "task_id": "paper-language-v0.1-academic_polishing",
+  "execution_mode": "native_subagent",
+  "project_id": "paper-language-synthetic-v01",
+  "editing_mode": "academic_polishing",
+  "language_variant": "preserve",
+  "editing_scope": "Only prose on source lines 7, 11, 13, 17, 28 and 36; preserve all other content exactly.",
+  "manuscript": {
+    "path": "paper-language-v0.1-fixture/manuscript.md",
+    "sha256": "fa05039c73ebacae4d9f1d76d901521e00d78603ddf703ce91974bf2d45a4501"
+  },
+  "terminology_glossary": {
+    "path": "paper-language-v0.1-fixture/terminology_glossary.yaml",
+    "sha256": "b9984d7799e7ceb01ab603447cc27ab1085fb40d19a8a17333c568b20baad2a0"
+  },
+  "changes": [
+    {
+      "change_id": "L01",
+      "source_location": {
+        "start_line": 7,
+        "end_line": 7,
+        "original_sha256": "1c23bf273003e4ef96df38b1193008b00fa7530c0397b038c67ae510c815e1bb"
+      },
+      "original_text": "A multi-agent system (MAS) use time series forecasts to coordinate agents.",
+      "revised_text": "A multi-agent system (MAS) uses time series forecasts to coordinate agents.",
+      "issue_type": "subject–verb agreement",
+      "reason": "Correct singular subject–verb agreement.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    },
+    {
+      "change_id": "L02",
+      "source_location": {
+        "start_line": 11,
+        "end_line": 11,
+        "original_sha256": "5cc523229b89a9b1b31ff4cc151c4dc1f9e3928b3b59fa8a65efd14e6f20c32a"
+      },
+      "original_text": "In order to be able to make decisions at a later time, agents use forecasts that are produced before that time, and these forecasts are produced in advance of the decisions that will be made later.",
+      "revised_text": "To make decisions at a later time, agents use forecasts produced before those decisions.",
+      "issue_type": "concision",
+      "reason": "Remove redundant descriptions of the same timing while retaining the ordering of forecasts and decisions.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    },
+    {
+      "change_id": "L03",
+      "source_location": {
+        "start_line": 13,
+        "end_line": 13,
+        "original_sha256": "4ad83474493b2009088efbc1168398861772a80d5981347dca89666f8e70f548"
+      },
+      "original_text": "It checks whether the input is available.",
+      "revised_text": "It checks whether the input is available.",
+      "issue_type": "ambiguous reference",
+      "reason": "The antecedent of “It” could be the controller or the monitor; ask the author to identify the component.",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "deferred",
+      "applied_to_draft": false
+    },
+    {
+      "change_id": "L04",
+      "source_location": {
+        "start_line": 17,
+        "end_line": 17,
+        "original_sha256": "46d1bcd4a805ffddab055ef3f9cef4ad17d266cd99d33a33d2a2ed35f6f86a35"
+      },
+      "original_text": "The Horizon Mapper produce a forecast from the available observations.",
+      "revised_text": "The Horizon Mapper produces a forecast from the available observations.",
+      "issue_type": "subject–verb agreement",
+      "reason": "Correct singular subject–verb agreement while preserving the model name.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    },
+    {
+      "change_id": "L05",
+      "source_location": {
+        "start_line": 28,
+        "end_line": 28,
+        "original_sha256": "c51a22ddf2bee69061060d09acfc2a3cc5fab8a404fea138ccfe03c3122c5f9a"
+      },
+      "original_text": "These fictional values indicate a difference in this example, but they do not establish a causal effect.",
+      "revised_text": "These fictional values indicate a difference in this example, but they do not establish a causal effect.",
+      "issue_type": "ambiguous technical phrasing",
+      "reason": "The values and the difference they indicate are not specified clearly in this sentence; ask the author to clarify without inferring a comparison.",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "deferred",
+      "applied_to_draft": false
+    },
+    {
+      "change_id": "L06",
+      "source_location": {
+        "start_line": 36,
+        "end_line": 36,
+        "original_sha256": "b3505b2f33bd0d212940fd0310ba85fce22a08c64bd6a29ab38efd05a3867265"
+      },
+      "original_text": "The synthetic result is limited to the described example. The synthetic result is limited to the described example.",
+      "revised_text": "The synthetic result is limited to the described example.",
+      "issue_type": "duplication",
+      "reason": "Remove the immediately repeated identical sentence and retain the limitation.",
+      "semantic_risk": "low",
+      "approval_required": true,
+      "status": "proposed",
+      "applied_to_draft": true
+    }
+  ]
+}

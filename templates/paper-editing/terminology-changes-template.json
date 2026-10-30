@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "task_id": "<task ID>",
+  "execution_mode": "native_subagent or inline",
+  "manuscript": {"path": "<workspace-relative Markdown path>", "sha256": "<SHA-256>"},
+  "review_scope": "<authorized scope>",
+  "changes": [
+    {
+      "issue_id": "T01",
+      "location": {"section": "<heading>", "start_line": 1, "end_line": 1, "quote": "<exact original text>"},
+      "original_term": "<literal within quote>",
+      "suggested_term": null,
+      "reason": "<contextual reason or author question>",
+      "priority": "medium",
+      "semantic_risk": "high",
+      "approval_required": true,
+      "status": "proposed"
+    }
+  ]
+}
